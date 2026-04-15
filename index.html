@@ -20,10 +20,8 @@
         linear-gradient(135deg, #03050a, #07101d, #0b1628, #0a1322);
       color: #ffffff;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* HEADER */
     .header {
       height: 82px;
       display: flex;
@@ -31,12 +29,7 @@
       justify-content: space-between;
       padding: 0 28px;
       background: rgba(4, 8, 16, 0.88);
-      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(91, 169, 255, 0.15);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-      position: sticky;
-      top: 0;
-      z-index: 20;
     }
 
     .brand {
@@ -53,239 +46,79 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 0 18px rgba(87, 176, 255, 0.35),
-        0 0 35px rgba(27, 95, 191, 0.25);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-icon::before {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
-      transform: rotate(25deg);
-      left: -120%;
-      animation: shine 4s infinite;
-    }
-
-    @keyframes shine {
-      0% { left: -120%; }
-      50% { left: 120%; }
-      100% { left: 120%; }
-    }
-
-    .logo-icon span {
-      font-size: 24px;
-      font-weight: bold;
       color: white;
-      z-index: 1;
+      font-weight: bold;
     }
 
     .brand-text h1 {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 26px;
       color: #7fc4ff;
-      text-shadow: 0 0 12px rgba(87, 176, 255, 0.22);
     }
 
-    .brand-text p {
-      font-size: 12px;
-      color: #a9c9ef;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .top-badge {
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #dcedff;
-      background: linear-gradient(135deg, rgba(20,40,75,0.95), rgba(17,69,130,0.95));
-      border: 1px solid rgba(113, 188, 255, 0.25);
-      box-shadow: 0 0 18px rgba(50, 120, 255, 0.14);
-    }
-
-    /* LAYOUT */
     .container {
       display: flex;
-      min-height: calc(100vh - 82px);
     }
 
-    /* SIDEBAR */
     .sidebar {
-      width: 320px;
-      padding: 22px 18px;
-      background: linear-gradient(180deg, rgba(2,5,11,0.97), rgba(7,16,29,0.95), rgba(10,24,45,0.96));
-      border-right: 1px solid rgba(91, 169, 255, 0.12);
-      box-shadow: 8px 0 25px rgba(0, 0, 0, 0.22);
-    }
-
-    .sidebar-title {
-      font-size: 15px;
-      color: #8fc9ff;
-      font-weight: 700;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      width: 300px;
+      padding: 20px;
+      background: #07101d;
     }
 
     .menu-btn {
       width: 100%;
-      padding: 14px 16px;
-      margin-bottom: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(105, 175, 255, 0.16);
-      background: linear-gradient(135deg, rgba(8,18,33,0.98), rgba(14,30,53,0.98));
-      color: #eff7ff;
-      text-align: left;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #102948;
+      color: white;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.28s ease;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .menu-btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-      transition: 0.5s;
-    }
-
-    .menu-btn:hover::before {
-      left: 100%;
     }
 
     .menu-btn:hover {
-      transform: translateX(5px) scale(1.01);
-      background: linear-gradient(135deg, #102948, #164c87);
-      border-color: rgba(122, 197, 255, 0.35);
-      box-shadow: 0 0 20px rgba(56, 135, 255, 0.16);
+      background: #1b5eb0;
     }
 
-    .menu-btn.active {
-      background: linear-gradient(135deg, #123159, #1c5eaa);
-      border-color: rgba(122, 197, 255, 0.45);
-      box-shadow:
-        0 0 18px rgba(79, 156, 255, 0.18),
-        inset 0 0 10px rgba(255,255,255,0.04);
-    }
-
-    /* MAIN */
     .main-content {
       flex: 1;
-      padding: 28px;
+      padding: 25px;
     }
 
     .panel {
-      background: linear-gradient(180deg, rgba(8,16,30,0.95), rgba(10,20,37,0.96));
-      border: 1px solid rgba(105, 175, 255, 0.14);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255,255,255,0.03);
+      background: #0d1727;
+      padding: 25px;
+      border-radius: 15px;
     }
 
-    .panel-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 24px;
-    }
-
-    .panel h2 {
-      font-size: 32px;
+    h2 {
+      margin-bottom: 20px;
       color: #7fc4ff;
-      font-weight: 800;
-      text-shadow: 0 0 12px rgba(127, 196, 255, 0.14);
     }
 
-    .mini-info {
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(18, 43, 76, 0.7);
-      border: 1px solid rgba(122, 197, 255, 0.18);
-      color: #d9eeff;
-      font-size: 13px;
-    }
-
-    .field-label {
-      display: block;
-      margin-bottom: 10px;
-      color: #dbeeff;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .select-box {
+    select {
       width: 100%;
-      padding: 15px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(112, 186, 255, 0.18);
-      background: linear-gradient(135deg, #08111f, #0d1930);
-      color: #ffffff;
-      font-size: 15px;
-      margin-bottom: 24px;
-      outline: none;
-      transition: 0.25s;
-      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background: #08111f;
+      color: white;
+      border: none;
     }
 
-    .select-box:focus {
-      border-color: rgba(112, 186, 255, 0.45);
-      box-shadow: 0 0 0 4px rgba(77, 145, 255, 0.12);
-    }
-
-    /* ACTION BUTTONS */
     .action-buttons {
       display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .action-btn {
       flex: 1;
-      min-width: 220px;
-      padding: 15px 18px;
+      padding: 12px;
+      background: #1b5eb0;
       border: none;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #13345c, #1b5eb0);
+      border-radius: 10px;
       color: white;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 700;
-      transition: 0.25s ease;
-      box-shadow: 0 10px 20px rgba(12, 36, 75, 0.28);
-    }
-
-    .action-btn:hover {
-      transform: translateY(-3px);
-      background: linear-gradient(135deg, #18477f, #2874d3);
-      box-shadow: 0 14px 22px rgba(37, 102, 210, 0.18);
-    }
-
-    /* TABLE */
-    .table-box {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(106, 177, 255, 0.15);
-      background: rgba(7, 15, 28, 0.72);
     }
 
     table {
@@ -293,179 +126,102 @@
       border-collapse: collapse;
     }
 
-    thead {
-      background: linear-gradient(90deg, #123159, #1d63b7);
+    th, td {
+      padding: 12px;
+      border: 1px solid #1b5eb0;
+      text-align: center;
     }
 
     th {
-      padding: 16px 12px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #ffffff;
-      text-align: center;
-      letter-spacing: 0.3px;
-    }
-
-    td {
-      padding: 15px 12px;
-      text-align: center;
-      color: #d9edff;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.01);
-      transition: 0.2s;
-    }
-
-    tbody tr:hover td {
-      background: rgba(81, 160, 255, 0.08);
-    }
-
-    /* FOOT NOTE */
-    .footer-note {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #9dbad9;
-      text-align: right;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 980px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(91, 169, 255, 0.12);
-      }
-
-      .main-content {
-        padding: 18px;
-      }
-
-      .header {
-        padding: 0 16px;
-      }
-
-      .brand-text h1 {
-        font-size: 22px;
-      }
-
-      .top-badge {
-        display: none;
-      }
+      background: #1b5eb0;
     }
   </style>
 </head>
+
 <body>
 
-  <header class="header">
-    <div class="brand">
-      <div class="logo-icon">
-        <span>A</span>
-      </div>
-      <div class="brand-text">
-        <h1>AstraStruct</h1>
-        <p>BTP Premium Interface</p>
-      </div>
+<header class="header">
+  <div class="brand">
+    <div class="logo-icon">A</div>
+    <div class="brand-text">
+      <h1>AstraStruct</h1>
     </div>
-
-    <div class="top-badge">Plateforme professionnelle</div>
-  </header>
-
-  <div class="container">
-    <aside class="sidebar">
-      <div class="sidebar-title">Commandes</div>
-
-      <button class="menu-btn active">Terrassement et fondation</button>
-      <button class="menu-btn">Béton et Maçonnerie</button>
-      <button class="menu-btn">Carrelage et revêtement</button>
-      <button class="menu-btn">Charpente et couverture</button>
-      <button class="menu-btn">Plafond</button>
-      <button class="menu-btn">Plomberie</button>
-      <button class="menu-btn">Electricité</button>
-      <button class="menu-btn">Menuiserie et Ferronnerie</button>
-      <button class="menu-btn">Finition et Peinture</button>
-    </aside>
-
-    <main class="main-content">
-      <section class="panel">
-        <div class="panel-top">
-          <h2>Tâche</h2>
-          <div class="mini-info">Gestion intelligente des rendements</div>
-        </div>
-
-        <label class="field-label" for="tache">Choisir une tâche</label>
-        <select id="tache" class="select-box">
-          <option>Choisir une tâche</option>
-          <option>Excavation</option>
-          <option>Fouille en rigole</option>
-          <option>Semelle filante</option>
-          <option>Radier</option>
-          <option>Béton armé</option>
-          <option>Montage de mur</option>
-          <option>Enduit</option>
-          <option>Pose carrelage</option>
-          <option>Charpente</option>
-          <option>Installation plafond</option>
-          <option>Réseau plomberie</option>
-          <option>Installation électrique</option>
-          <option>Menuiserie bois</option>
-          <option>Ferronnerie</option>
-          <option>Peinture intérieure</option>
-        </select>
-
-        <div class="action-buttons">
-          <button class="action-btn">Rendement du personnel</button>
-          <button class="action-btn">Quantitatifs des matériaux</button>
-          <button class="action-btn">Rendement matériels</button>
-        </div>
-
-        <div class="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>Rôle</th>
-                <th>Rendement (h/U)</th>
-                <th>Production (U/h)</th>
-                <th>Efficacité</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Chef de chantier</td>
-                <td>1.20</td>
-                <td>0.83</td>
-                <td>92%</td>
-              </tr>
-              <tr>
-                <td>Maçon</td>
-                <td>0.75</td>
-                <td>1.33</td>
-                <td>88%</td>
-              </tr>
-              <tr>
-                <td>Manœuvre</td>
-                <td>0.50</td>
-                <td>2.00</td>
-                <td>85%</td>
-              </tr>
-              <tr>
-                <td>Technicien</td>
-                <td>0.95</td>
-                <td>1.05</td>
-                <td>90%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="footer-note">
-          AstraStruct © Interface Ultra Pro
-        </div>
-      </section>
-    </main>
   </div>
+</header>
+
+<div class="container">
+
+  <!-- MENU -->
+  <aside class="sidebar">
+    <button class="menu-btn" onclick="chargerTerrassement()">
+      Terrassement et fondation
+    </button>
+
+    <button class="menu-btn">Béton et Maçonnerie</button>
+    <button class="menu-btn">Carrelage et revêtement</button>
+    <button class="menu-btn">Charpente et couverture</button>
+    <button class="menu-btn">Plafond</button>
+    <button class="menu-btn">Plomberie</button>
+    <button class="menu-btn">Electricité</button>
+    <button class="menu-btn">Menuiserie et Ferronnerie</button>
+    <button class="menu-btn">Finition et Peinture</button>
+  </aside>
+
+  <!-- CONTENU -->
+  <main class="main-content">
+    <div class="panel">
+
+      <h2>Tâche</h2>
+
+      <select id="tache">
+        <option>Choisir une tâche</option>
+      </select>
+
+      <div class="action-buttons">
+        <button class="action-btn">Rendement du personnel</button>
+        <button class="action-btn">Quantitatifs des matériaux</button>
+        <button class="action-btn">Rendement matériels</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rôle</th>
+            <th>Rendement (h/U)</th>
+            <th>Production (U/h)</th>
+            <th>Efficacité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chef de chantier</td>
+            <td>1.20</td>
+            <td>0.83</td>
+            <td>92%</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+function chargerTerrassement() {
+  const select = document.getElementById("tache");
+
+  select.innerHTML = `
+    <option>Choisir une tâche</option>
+    <option>Décapage et débroussaillage</option>
+    <option>Réglage et nivellement</option>
+    <option>Fouille pour fondation</option>
+    <option>Remblai</option>
+    <option>Déblai et évacuation des terres</option>
+  `;
+}
+</script>
 
 </body>
 </html>
