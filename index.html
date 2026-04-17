@@ -45,44 +45,49 @@
       gap: 14px;
     }
 
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #0d2342, #1b5fbf, #57b0ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 0 18px rgba(87, 176, 255, 0.35),
-        0 0 35px rgba(27, 95, 191, 0.25);
-      position: relative;
-      overflow: hidden;
-    }
+.logo-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  box-shadow:
+    0 0 12px rgba(87, 176, 255, 0.20),
+    0 0 28px rgba(27, 95, 191, 0.18);
+}
 
-    .logo-icon::before {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
-      transform: rotate(25deg);
-      left: -120%;
-      animation: shine 4s infinite;
-    }
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    @keyframes shine {
-      0% { left: -120%; }
-      50% { left: 120%; }
-      100% { left: 120%; }
-    }
+.scintille {
+  animation: pulseGlow 2.2s infinite ease-in-out;
+}
 
-    .logo-icon span {
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      z-index: 1;
-    }
+.scintille::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -140%;
+  width: 70%;
+  height: 140%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.55),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: shineSweep 3s infinite;
+}
 
     .brand-text h1 {
       font-size: 28px;
