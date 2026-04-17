@@ -399,6 +399,166 @@ function toggleMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 </script>
+<script>
+  function toggleMenu() {
+    document.querySelector(".sidebar").classList.toggle("active");
+  }
+
+  function changerTableau(headers, rows) {
+    let headHtml = "<tr>";
+    headers.forEach(header => {
+      headHtml += `<th>${header}</th>`;
+    });
+    headHtml += "</tr>";
+    document.getElementById("tableHead").innerHTML = headHtml;
+
+    let bodyHtml = "";
+    rows.forEach(row => {
+      bodyHtml += "<tr>";
+      row.forEach(cell => {
+        bodyHtml += `<td>${cell}</td>`;
+      });
+      bodyHtml += "</tr>";
+    });
+    document.getElementById("tableBody").innerHTML = bodyHtml;
+  }
+
+  function afficherRendementPersonnel() {
+    changerTableau(
+      ["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"],
+      [
+        ["Chef de chantier", "1.20", "0.83", "92%"],
+        ["Maçon", "0.75", "1.33", "88%"],
+        ["Manœuvre", "0.50", "2.00", "85%"],
+        ["Technicien", "0.95", "1.05", "90%"]
+      ]
+    );
+  }
+
+  function afficherQuantitatifsMateriaux() {
+    changerTableau(
+      ["Matériaux", "Quantité", "Unités", "Coût estimé"],
+      [
+        ["Ciment", "25", "sacs", "875000 Ar"],
+        ["Sable", "4", "m<sup>3</sup>", "280000 Ar"],
+        ["Gravier", "5", "m<sup>3</sup>", "450000 Ar"],
+        ["Eau", "500", "L", "50000 Ar"]
+      ]
+    );
+  }
+
+  function afficherRendementMateriels() {
+    changerTableau(
+      ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
+      [
+        ["Bétonnière", "0.80", "1.25", "Optimal"],
+        ["Vibreur", "0.60", "1.67", "Normal"],
+        ["Pelle", "1.10", "0.91", "Faible"],
+        ["Compacteur", "0.75", "1.33", "Optimal"]
+      ]
+    );
+  }
+
+  function remplirTaches(options) {
+    let html = `<option>Choisir une tâche</option>`;
+    options.forEach(option => {
+      html += `<option>${option}</option>`;
+    });
+    document.getElementById("tache").innerHTML = html;
+  }
+
+  function chargerTerrassement() {
+    remplirTaches([
+      "Décapage et Débroussaillage (m²)",
+      "Régage et Nivellement (m²)",
+      "Fouille pour fondation (m³)",
+      "Remblai (m³)",
+      "Déblai et Evacuation des terres (m³)",
+      "Hérissonnage (m³)"
+    ]);
+  }
+
+  function chargerBetonMaconnerie() {
+    remplirTaches([
+      "Béton de propreté (m³)",
+      "Béton armé (m³)",
+      "Coffrage (m²)",
+      "Ferraillage (kg)",
+      "Montage mur en parpaing (m²)",
+      "Enduit ciment (m²)"
+    ]);
+  }
+
+  function chargerCarrelageRevetement() {
+    remplirTaches([
+      "Pose carrelage au sol (m²)",
+      "Pose faïence murale (m²)",
+      "Jointoiement (m²)",
+      "Chape de ragréage (m²)",
+      "Revêtement extérieur (m²)"
+    ]);
+  }
+
+  function chargerCharpenteCouverture() {
+    remplirTaches([
+      "Pose charpente bois (m²)",
+      "Pose charpente métallique (m²)",
+      "Pose couverture bac acier (m²)",
+      "Pose tuiles (m²)",
+      "Faitage (ml)"
+    ]);
+  }
+
+  function chargerPlafond() {
+    remplirTaches([
+      "Pose plafond staff (m²)",
+      "Pose plafond PVC (m²)",
+      "Pose faux plafond (m²)",
+      "Habillage plafond (m²)"
+    ]);
+  }
+
+  function chargerPlomberie() {
+    remplirTaches([
+      "Pose conduite d'eau (ml)",
+      "Pose évacuation PVC (ml)",
+      "Installation lavabo (u)",
+      "Installation WC (u)",
+      "Pose douche (u)"
+    ]);
+  }
+
+  function chargerElectricite() {
+    remplirTaches([
+      "Passage de gaines (ml)",
+      "Tirage de câbles (ml)",
+      "Pose prises (u)",
+      "Pose interrupteurs (u)",
+      "Installation tableau électrique (u)",
+      "Pose luminaires (u)"
+    ]);
+  }
+
+  function chargerMenuiserieFerronnerie() {
+    remplirTaches([
+      "Pose porte en bois (u)",
+      "Pose fenêtre alu (u)",
+      "Fabrication garde-corps (ml)",
+      "Pose portail métallique (u)",
+      "Ferronnerie décorative (ml)"
+    ]);
+  }
+
+  function chargerFinitionPeinture() {
+    remplirTaches([
+      "Peinture intérieure (m²)",
+      "Peinture extérieure (m²)",
+      "Application sous-couche (m²)",
+      "Vernis bois (m²)",
+      "Finition décorative (m²)"
+    ]);
+  }
+</script>  
 <body>
 
  <header class="header">
@@ -421,15 +581,15 @@ function toggleMenu() {
     <aside class="sidebar">
       <div class="sidebar-title">Commandes</div>
 
-      <button class="menu-btn active">Terrassement et fondation</button>
-      <button class="menu-btn">Béton et Maçonnerie</button>
-      <button class="menu-btn">Carrelage et revêtement</button>
-      <button class="menu-btn">Charpente et couverture</button>
-      <button class="menu-btn">Plafond</button>
-      <button class="menu-btn">Plomberie</button>
-      <button class="menu-btn">Electricité</button>
-      <button class="menu-btn">Menuiserie et Ferronnerie</button>
-      <button class="menu-btn">Finition et Peinture</button>
+<button class="menu-btn active" onclick="chargerTerrassement()">Terrassement et fondation</button>
+<button class="menu-btn" onclick="chargerBetonMaconnerie()">Béton et Maçonnerie</button>
+<button class="menu-btn" onclick="chargerCarrelageRevetement()">Carrelage et revêtement</button>
+<button class="menu-btn" onclick="chargerCharpenteCouverture()">Charpente et couverture</button>
+<button class="menu-btn" onclick="chargerPlafond()">Plafond</button>
+<button class="menu-btn" onclick="chargerPlomberie()">Plomberie</button>
+<button class="menu-btn" onclick="chargerElectricite()">Electricité</button>
+<button class="menu-btn" onclick="chargerMenuiserieFerronnerie()">Menuiserie et Ferronnerie</button>
+<button class="menu-btn" onclick="chargerFinitionPeinture()">Finition et Peinture</button>
     </aside>
 
     <main class="main-content">
