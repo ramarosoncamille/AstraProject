@@ -394,23 +394,20 @@
 }
   </style>
 </head>
-  <script>
-function toggleMenu() {
-  document.querySelector(".sidebar").classList.toggle("active");
-  function activerBouton(boutonClique) {
-  const boutons = document.querySelectorAll(".menu-btn");
 
-  boutons.forEach(bouton => {
-    bouton.classList.remove("active");
-  });
-
-  boutonClique.classList.add("active");
-}
-}
-</script>
 <script>
   function toggleMenu() {
     document.querySelector(".sidebar").classList.toggle("active");
+  }
+
+  function activerBouton(boutonClique) {
+    const boutons = document.querySelectorAll(".menu-btn");
+
+    boutons.forEach(bouton => {
+      bouton.classList.remove("active");
+    });
+
+    boutonClique.classList.add("active");
   }
 
   function changerTableau(headers, rows) {
@@ -670,12 +667,6 @@ function toggleMenu() {
       </section>
     </main>
   </div>
-
-  <script>
-    function toggleMenu() {
-      document.querySelector(".sidebar").classList.toggle("active");
-    }
-  </script>
 
 </body>
 </html>
