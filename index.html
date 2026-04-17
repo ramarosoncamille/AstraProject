@@ -117,7 +117,18 @@
       border: 1px solid rgba(113, 188, 255, 0.25);
       box-shadow: 0 0 18px rgba(50, 120, 255, 0.14);
     }
-
+.menu-toggle {
+  display: none;
+  background: rgba(20,40,75,0.95);
+  border: 1px solid rgba(113, 188, 255, 0.25);
+  color: #ffffff;
+  font-size: 26px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(50, 120, 255, 0.14);
+}
     /* LAYOUT */
     .container {
       display: flex;
@@ -335,35 +346,59 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 980px) {
-      .container {
-        flex-direction: column;
-      }
+ @media (max-width: 980px) {
+  .menu-toggle {
+    display: block;
+  }
 
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(91, 169, 255, 0.12);
-      }
+  .top-badge {
+    display: none;
+  }
 
-      .main-content {
-        padding: 18px;
-      }
+  .container {
+    display: block;
+  }
 
-      .header {
-        padding: 0 16px;
-      }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 270px;
+    height: 100%;
+    z-index: 999;
+    transition: left 0.3s ease;
+    border-right: 1px solid rgba(91, 169, 255, 0.12);
+    border-bottom: none;
+  }
 
-      .brand-text h1 {
-        font-size: 22px;
-      }
+  .sidebar.active {
+    left: 0;
+  }
 
-      .top-badge {
-        display: none;
-      }
-    }
+  .main-content {
+    padding: 18px;
+  }
+
+  .header {
+    padding: 10px 16px;
+  }
+
+  .brand-text h1 {
+    font-size: 22px;
+  }
+
+  .logo-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
   </style>
 </head>
+  <script>
+function toggleMenu() {
+  document.querySelector(".sidebar").classList.toggle("active");
+}
+</script>
 <body>
 
  <header class="header">
@@ -460,12 +495,18 @@
           </table>
         </div>
 
-        <div class="footer-note">
+               <div class="footer-note">
          © AstraStruct
         </div>
       </section>
     </main>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector(".sidebar").classList.toggle("active");
+    }
+  </script>
 
 </body>
 </html>
