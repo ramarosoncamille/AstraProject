@@ -397,6 +397,15 @@
   <script>
 function toggleMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
+  function activerBouton(boutonClique) {
+  const boutons = document.querySelectorAll(".menu-btn");
+
+  boutons.forEach(bouton => {
+    bouton.classList.remove("active");
+  });
+
+  boutonClique.classList.add("active");
+}
 }
 </script>
 <script>
