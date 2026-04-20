@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  @keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      0 0 10px rgba(87, 176, 255, 0.18),
+      0 0 20px rgba(27, 95, 191, 0.12);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow:
+      0 0 18px rgba(87, 176, 255, 0.35),
+      0 0 34px rgba(27, 95, 191, 0.22);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 10px rgba(87, 176, 255, 0.18),
+      0 0 20px rgba(27, 95, 191, 0.12);
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    left: -140%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  45% {
+    left: 140%;
+    opacity: 1;
+  }
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AstraStruct</title>
@@ -517,7 +555,7 @@
       "Pose charpente non assemblée (m²) ",
       "Pose couverture en TOG (m²)",
       "Couverture en Tôle Galvabac (m²)",
-      "Couverture en TOG y compris charpente (m²),
+      "Couverture en TOG y compris charpente (m²)",
       "Solin en TPG (ml)",
       "Pose tuiles (m²)",
       "Faitière en TPG (ml)",
