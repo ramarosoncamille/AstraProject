@@ -2176,25 +2176,26 @@ function calculerQuantiteTache() {
     const nom = ligne[0];
     const quantiteUnitaire = parseFloat(String(ligne[1]).replace(",", "."));
     const unite = ligne[2];
-    const coutUnitaire = parseFloat(String(ligne[3]).replace(" Ar", "").replace(",", "."));
+    const prixUnitaire = parseFloat(String(ligne[3]).replace(" Ar", "").replace(",", "."));
 
     const quantiteTotale = quantiteUnitaire * quantiteCalculee;
-    const coutTotal = coutUnitaire * quantiteCalculee;
+    const prixTotal = prixUnitaire * quantiteCalculee;
 
     return [
       nom,
-      quantiteTotale.toFixed(2),
+      quantiteUnitaire.toFixed(2),
       unite,
-      `${coutTotal.toFixed(0)} Ar`
+      `${prixUnitaire.toFixed(0)} Ar`,
+      quantiteTotale.toFixed(2),
+      `${prixTotal.toFixed(0)} Ar`
     ];
   });
 
   changerTableau(
-    ["Matériaux", "Quantité", "Unités", "Coût estimé"],
-    donneesTaches[tache].materiaux
+    ["Matériaux", "Quantité unitaire", "Unité", "Prix unitaire", "Quantité totale", "Prix total"],
+    materiauxCalcules
   );
 }
-
   function afficherRendementMateriels() {
   const tache = document.getElementById("tache").value;
 
