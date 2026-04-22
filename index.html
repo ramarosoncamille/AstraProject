@@ -1786,7 +1786,7 @@ function calculerQuantiteTache() {
   );
 }
 
- function remplirTaches(options) {
+function remplirTaches(options) {
   let html = `<option>Choisir une tâche</option>`;
   options.forEach(option => {
     html += `<option>${option}</option>`;
@@ -1794,6 +1794,10 @@ function calculerQuantiteTache() {
   document.getElementById("tache").innerHTML = html;
   document.getElementById("tache").value = "Choisir une tâche";
   tacheSelectionnee = "";
+  quantiteCalculee = 0;
+  uniteCalculee = "";
+  document.getElementById("inputsCalcul").innerHTML = "";
+  document.getElementById("resultatQuantite").innerHTML = "Quantité calculée : -";
 }
   function chargerTerrassement() {
     remplirTaches([
