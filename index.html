@@ -472,6 +472,48 @@ const formulesTaches = {
     calcul: (v) => v.longueur * v.largeur * v.epaisseur
   },
 
+  "Béton dosé à 150kg/m³ (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Béton dosé à 250kg/m³ (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Béton dosé à 300kg/m³ (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Béton dosé à 350kg/m³ (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Maçonnerie de moellon (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Maçonnerie de briques artisanales (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Maçonnerie de mur en parpaing (m³)": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
   "Coffrage (m²)": {
     champs: [
       { id: "longueur", label: "Longueur (m)" },
@@ -479,6 +521,12 @@ const formulesTaches = {
     ],
     unite: "m²",
     calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Ferraillage (kg)": {
+    champs: [{ id: "poids", label: "Poids acier (kg)" }],
+    unite: "kg",
+    calcul: (v) => v.poids
   },
 
   "Enduit ciment (m²)": {
@@ -508,6 +556,60 @@ const formulesTaches = {
     calcul: (v) => v.longueur * v.largeur
   },
 
+  "Jointoiement (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Chape de ragréage (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Revêtement parkex 3 x 12 (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Plinthe en grès cérame 10 x 20 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Plinthe en bois de palissandre (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Pose charpente non assemblée (m³) ": {
+    champs: [{ id: "volume", label: "Volume (m³)" }],
+    unite: "m³",
+    calcul: (v) => v.volume
+  },
+
+  "Pose charpente non assemblée (m²) ": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
   "Pose couverture en TOG (m²)": {
     champs: [
       { id: "longueur", label: "Longueur (m)" },
@@ -526,7 +628,64 @@ const formulesTaches = {
     calcul: (v) => v.longueur * v.largeur
   },
 
+  "Couverture en TOG y compris charpente (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Solin en TPG (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Pose tuiles (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Faitière en TPG (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Noue en TPG (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Planche de rive (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Goutière en TPG (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
   "Pose plafond en isolère y compris charpente (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Pose plafond en volige sapin y compris charpente (m²)": {
     champs: [
       { id: "longueur", label: "Longueur (m)" },
       { id: "largeur", label: "Largeur (m)" }
@@ -544,47 +703,301 @@ const formulesTaches = {
     calcul: (v) => v.longueur * v.largeur
   },
 
-  "Installation de tuyaux 20/27 (ml)": {
+  "Pose plafond en volige palissandre y compris charpente (m²)": {
     champs: [
-      { id: "longueur", label: "Longueur (m)" }
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
     ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Pose plafond en volige varongy y compris charpente (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Habillage plafond (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Installation de tuyaux 20/27 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
     unite: "ml",
     calcul: (v) => v.longueur
   },
 
   "Installation de tuyaux 15/21 (ml)": {
-    champs: [
-      { id: "longueur", label: "Longueur (m)" }
-    ],
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
     unite: "ml",
     calcul: (v) => v.longueur
+  },
+
+  "Installation de tuyaux 12/17 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Installation de robinet d'arrosage (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Installation de robinet de puisage (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Installation de receveur de douche (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Installation lavabo à pied en porcelaine (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Regard en maçonnerie 50 x 50 (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Installation WC (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose douche (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose d'interrupteur simple allumage (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose d'interrupteur à allumage va et vient (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
   },
 
   "Passage de gaines (ml)": {
-    champs: [
-      { id: "longueur", label: "Longueur (m)" }
-    ],
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
     unite: "ml",
     calcul: (v) => v.longueur
   },
 
+  "Câblage en VGV 2 x 1,5 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Câblage en VGV 3 x 1,5 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Câblage en VGV 2 x 2,5 (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Pose prises lumière bipolaire (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Prise force 2P+T (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Globe Opalin B22 (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Reglette monotube 1,20m (U)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "U",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose disjoncteur (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Installation tableau électrique (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose luminaires (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
   "Pose porte en bois 0,80 x 2,00 (u)": {
-    champs: [
-      { id: "nombre", label: "Nombre d'unités" }
-    ],
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en bois 0,90 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en bois 0,70 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en bois 1,00 x 0,70 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en alu 0,80 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en alu 0,90 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en alu 0,70 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose porte en alu 1,00 x 0,70 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
     unite: "u",
     calcul: (v) => v.nombre
   },
 
   "Pose fenêtre alu 2,00 x 2,00 (u)": {
-    champs: [
-      { id: "nombre", label: "Nombre d'unités" }
-    ],
+    champs: [{ id: "nombre", label: "Nombre" }],
     unite: "u",
     calcul: (v) => v.nombre
   },
 
+  "Pose fenêtre en bois 2,00 x 2,00 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose fenêtre en bois 120 x 120 (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Fabrication garde-corps (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Pose portail métallique (u)": {
+    champs: [{ id: "nombre", label: "Nombre" }],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Grille de protection (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Ferronnerie décorative (ml)": {
+    champs: [{ id: "longueur", label: "Longueur (m)" }],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
   "Peinture intérieure (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Peinture extérieure (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Application sous-couche (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Vernis bois (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Finition décorative (m²)": {
     champs: [
       { id: "longueur", label: "Longueur (m)" },
       { id: "hauteur", label: "Hauteur (m)" }
