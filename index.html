@@ -524,37 +524,42 @@ const donneesTaches = {
   }
 
   function afficherQuantitatifsMateriaux() {
-    changerTableau(
-      ["Matériaux", "Quantité", "Unités", "Coût estimé"],
-      [
-        ["Ciment", "25", "sacs", "875000 Ar"],
-        ["Sable", "4", "m<sup>3</sup>", "280000 Ar"],
-        ["Gravier", "5", "m<sup>3</sup>", "450000 Ar"],
-        ["Eau", "500", "L", "50000 Ar"]
-      ]
-    );
+  const tache = document.getElementById("tache").value;
+
+  if (!donneesTaches[tache]) {
+    alert("Choisis d'abord une tâche.");
+    return;
   }
+
+  changerTableau(
+    ["Matériaux", "Quantité", "Unités", "Coût estimé"],
+    donneesTaches[tache].materiaux
+  );
+}
 
   function afficherRendementMateriels() {
-    changerTableau(
-      ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
-      [
-        ["Bétonnière", "0.80", "1.25", "Optimal"],
-        ["Vibreur", "0.60", "1.67", "Normal"],
-        ["Pelle", "1.10", "0.91", "Faible"],
-        ["Compacteur", "0.75", "1.33", "Optimal"]
-      ]
-    );
+  const tache = document.getElementById("tache").value;
+
+  if (!donneesTaches[tache]) {
+    alert("Choisis d'abord une tâche.");
+    return;
   }
 
-  function remplirTaches(options) {
-    let html = `<option>Choisir une tâche</option>`;
-    options.forEach(option => {
-      html += `<option>${option}</option>`;
-    });
-    document.getElementById("tache").innerHTML = html;
-  }
+  changerTableau(
+    ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
+    donneesTaches[tache].materiels
+  );
+}
 
+ function remplirTaches(options) {
+  let html = `<option>Choisir une tâche</option>`;
+  options.forEach(option => {
+    html += `<option>${option}</option>`;
+  });
+  document.getElementById("tache").innerHTML = html;
+  document.getElementById("tache").value = "Choisir une tâche";
+  tacheSelectionnee = "";
+}
   function chargerTerrassement() {
     remplirTaches([
       "Décapage et Débroussaillage (m²)",
