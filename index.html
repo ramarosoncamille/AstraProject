@@ -2647,6 +2647,133 @@ function afficherHistoriqueCalculs() {
 
   totalGeneral.innerHTML = `Total général quantitatifs : ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar`;
 }
+
+function genererTableauExport(titres, lignes) {
+  let html = `
+    <table class="export-table">
+      <thead>
+        <tr>
+          ${titres.map(t => `<th>${t}</th>`).join("")}
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  lignes.forEach(ligne => {
+    html += `<tr>${ligne.map(cell => `<td>${cell}</td>`).join("")}</tr>`;
+  });
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  return html;
+}
+
+function construireContenuExport() {
+  const zone = document.getElementById("zoneExport");
+  const tache = document.getElementById("tache").value;
+
+  let contenuHistorique = "";
+
+  historiqueCalculs.forEach(bloc => {
+    let prixBloc = 0;
+
+    bloc.quantitatifMateriaux.forEach(ligne => {
+      prixBloc += extrairePrixNumerique(ligne[5]);
+    });
+
+    contenuHistorique += `
+      <div class="export-section-title">${bloc.tache}</div>
+      <div class="export-meta">Quantité calculée : ${bloc.quantite} ${bloc.unite}</div>
+      <div class="export-meta">Total quantitatifs : ${prixBloc.toFixed(0)} Ar</div>
+
+      <div class="export-section-title">Rendement du personnel</div>
+      ${genererTableauExport(
+        ["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"],
+        bloc.rendementPersonnel
+      )}
+
+      <div class="export-section-title">Quantitatifs des matériaux</div>
+      ${genererTableauExport(
+        ["Matériaux", "Quantité unitaire", "Unité", "Prix unitaire", "Quantité totale", "Prix total"],
+        bloc.quantitatifMateriaux
+      )}
+
+      <div class="export-section-title">Rendement des matériels</div>
+      ${genererTableauExport(
+        ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
+        bloc.rendementMateriels
+      )}
+    `;
+  });
+
+  zone.innerHTML = `
+    <div class="export-page">
+      <div class="export-header">
+        <img src="logo.png" alt="Logo AstraStruct">
+        <div class="export-title">
+          <h1>AstraStruct</h1>
+          <p>BTP PREMIUM - Rapport des calculs</p>
+        </div>
+      </div>
+
+      <div class="export-meta"><strong>Tâche actuelle :</strong> ${tache}</div>
+      <div class="export-meta"><strong>Quantité actuelle :</strong> ${quantiteCalculee ? quantiteCalculee.toFixed(2) : "0.00"} ${uniteCalculee || ""}</div>
+      <div class="export-meta"><strong>Total général quantitatifs :</strong> ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar</div>
+
+      ${contenuHistorique || "<div class='export-meta'>Aucun calcul enregistré.</div>"}
+    </div>
+  `;
+}
+
+async function telechargerPDF() {
+  construireContenuExport();
+
+  const zone = document.getElementById("zoneExport");
+  zone.style.display = "block";
+
+  const canvas = await html2canvas(zone, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: "#ffffff"
+  });
+
+  const imgData = canvas.toDataURL("image/png");
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight();
+
+  const imgWidth = pdfWidth;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  let heightLeft = imgHeight;
+  let position = 0;
+
+  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+  heightLeft -= pdfHeight;
+
+  while (heightLeft > 0) {
+    position = heightLeft - imgHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pdfHeight;
+  }
+
+  pdf.save("AstraStruct_Rapport.pdf");
+  zone.style.display = "none";
+}
+
+function imprimerResultats() {
+  construireContenuExport();
+  const zone = document.getElementById("zoneExport");
+  zone.style.display = "block";
+  window.print();
+  zone.style.display = "none";
+}
   
 </script>  
 <body>
