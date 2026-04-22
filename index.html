@@ -70,7 +70,7 @@
 }
 
 .scintille {
-  animation: pulseGlow 2.2s infinite ease-in-out;
+  animation: pulseGlow 30s infinite ease-in-out;
 }
 
 .scintille::after {
@@ -88,29 +88,25 @@
     transparent
   );
   transform: rotate(18deg);
-  animation: shineSweep 3s infinite;
+  animation: shineSweep 30s infinite;
 }
 @keyframes pulseGlow {
   0% {
     transform: scale(1);
-    box-shadow:
-      0 0 12px rgba(87, 176, 255, 0.20),
-      0 0 28px rgba(27, 95, 191, 0.18);
   }
-  50% {
-    transform: scale(1.03);
-    box-shadow:
-      0 0 18px rgba(87, 176, 255, 0.35),
-      0 0 36px rgba(27, 95, 191, 0.28);
+
+  2% {
+    transform: scale(1.05);
   }
+
+  4% {
+    transform: scale(1);
+  }
+
   100% {
     transform: scale(1);
-    box-shadow:
-      0 0 12px rgba(87, 176, 255, 0.20),
-      0 0 28px rgba(27, 95, 191, 0.18);
   }
 }
-
 @keyframes shineSweep {
   0% {
     left: -140%;
