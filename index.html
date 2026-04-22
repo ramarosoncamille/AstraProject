@@ -413,6 +413,187 @@ let tacheSelectionnee = "";
 let quantiteCalculee = 0;
 let uniteCalculee = "";
 
+const formulesTaches = {
+  "Décapage et Débroussaillage (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Régage et Nivellement (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Fouille pour fondation (m³)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" },
+      { id: "profondeur", label: "Profondeur (m)" }
+    ],
+    unite: "m³",
+    calcul: (v) => v.longueur * v.largeur * v.profondeur
+  },
+
+  "Remblai (m³)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m³",
+    calcul: (v) => v.longueur * v.largeur * v.hauteur
+  },
+
+  "Déblai et Evacuation des terres (m³)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" },
+      { id: "profondeur", label: "Profondeur (m)" }
+    ],
+    unite: "m³",
+    calcul: (v) => v.longueur * v.largeur * v.profondeur
+  },
+
+  "Hérissonnage (m³)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" },
+      { id: "epaisseur", label: "Épaisseur (m)" }
+    ],
+    unite: "m³",
+    calcul: (v) => v.longueur * v.largeur * v.epaisseur
+  },
+
+  "Coffrage (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Enduit ciment (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  },
+
+  "Revêtement en carreau faïence 15 x 15 (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Carrelage en grès cerame 30 x 30 (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Pose couverture en TOG (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Couverture en Tôle Galvabac (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Pose plafond en isolère y compris charpente (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Pose faux plafond en volige varongy y compris charpente(m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "largeur", label: "Largeur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.largeur
+  },
+
+  "Installation de tuyaux 20/27 (ml)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" }
+    ],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Installation de tuyaux 15/21 (ml)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" }
+    ],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Passage de gaines (ml)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" }
+    ],
+    unite: "ml",
+    calcul: (v) => v.longueur
+  },
+
+  "Pose porte en bois 0,80 x 2,00 (u)": {
+    champs: [
+      { id: "nombre", label: "Nombre d'unités" }
+    ],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Pose fenêtre alu 2,00 x 2,00 (u)": {
+    champs: [
+      { id: "nombre", label: "Nombre d'unités" }
+    ],
+    unite: "u",
+    calcul: (v) => v.nombre
+  },
+
+  "Peinture intérieure (m²)": {
+    champs: [
+      { id: "longueur", label: "Longueur (m)" },
+      { id: "hauteur", label: "Hauteur (m)" }
+    ],
+    unite: "m²",
+    calcul: (v) => v.longueur * v.hauteur
+  }
+};
+  
 const donneesTaches = {
   "Décapage et Débroussaillage (m²)": {
     materiaux: [
