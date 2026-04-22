@@ -1648,6 +1648,56 @@ const donneesTaches = {
   
   function mettreAJourTacheSelectionnee() {
   tacheSelectionnee = document.getElementById("tache").value;
+  afficherChampsCalcul();
+}
+  
+  function afficherChampsCalcul() {
+  const zone = document.getElementById("inputsCalcul");
+  const resultat = document.getElementById("resultatQuantite");
+  zone.innerHTML = "";
+  resultat.innerHTML = "Quantité calculée : -";
+  quantiteCalculee = 0;
+  uniteCalculee = "";
+
+  if (!formulesTaches[tacheSelectionnee]) {
+    zone.innerHTML = "<div style='color:#9dbad9;'>Aucune formule définie pour cette tâche.</div>";
+    return;
+  }
+
+  formulesTaches[tacheSelectionnee].champs.forEach(champ => {
+    zone.innerHTML += `
+      <div style="display:flex; flex-direction:column; min-width:180px;">
+        <label style="margin-bottom:6px; color:#dbeeff;">${champ.label}</label>
+        <input type="number" step="0.01" id="${champ.id}"
+          style="padding:12px; border-radius:12px; border:1px solid rgba(112,186,255,0.18); background:#08111f; color:white;">
+      </div>
+    `;
+  });
+}
+
+function calculerQuantiteTache() {
+  if (!formulesTaches[tacheSelectionnee]) {
+    alert("Choisis d'abord une tâche.");
+    return;
+  }
+
+  const definition = formulesTaches[tacheSelectionnee];
+  const valeurs = {};
+
+  for (const champ of definition.champs) {
+    const valeur = parseFloat(document.getElementById(champ.id).value);
+    if (isNaN(valeur)) {
+      alert("Remplis tous les champs de calcul.");
+      return;
+    }
+    valeurs[champ.id] = valeur;
+  }
+
+  quantiteCalculee = definition.calcul(valeurs);
+  uniteCalculee = definition.unite;
+
+  document.getElementById("resultatQuantite").innerHTML =
+    `Quantité calculée : ${quantiteCalculee.toFixed(2)} ${uniteCalculee}`;
 }
   
   function changerTableau(headers, rows) {
