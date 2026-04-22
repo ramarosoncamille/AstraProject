@@ -1739,6 +1739,33 @@ function calculerQuantiteTache() {
     return;
   }
 
+  if (!quantiteCalculee || quantiteCalculee <= 0) {
+    alert("Calcule d'abord la quantité de la tâche.");
+    return;
+  }
+
+  const materiauxCalcules = donneesTaches[tache].materiaux.map(ligne => {
+    const nom = ligne[0];
+    const quantiteUnitaire = parseFloat(String(ligne[1]).replace(",", "."));
+    const unite = ligne[2];
+    const coutUnitaire = parseFloat(String(ligne[3]).replace(" Ar", "").replace(",", "."));
+
+    const quantiteTotale = quantiteUnitaire * quantiteCalculee;
+    const coutTotal = coutUnitaire * quantiteCalculee;
+
+    return [
+      nom,
+      quantiteTotale.toFixed(2),
+      unite,
+      `${coutTotal.toFixed(0)} Ar`
+    ];
+  });
+
+  changerTableau(
+    ["Matériaux", "Quantité", "Unités", "Coût estimé"],
+    materiauxCalcules
+  );
+}
   changerTableau(
     ["Matériaux", "Quantité", "Unités", "Coût estimé"],
     donneesTaches[tache].materiaux
