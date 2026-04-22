@@ -442,6 +442,95 @@
     height: 60px;
   }
 }
+
+    .export-page {
+  background: white;
+  color: black;
+  padding: 30px;
+  width: 1000px;
+  font-family: Arial, sans-serif;
+}
+
+.export-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1b5eb0;
+  padding-bottom: 14px;
+}
+
+.export-header img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.export-title h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1b5eb0;
+}
+
+.export-title p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.export-section-title {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #1b5eb0;
+  font-weight: bold;
+}
+
+.export-meta {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #222;
+}
+
+.export-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.export-table th,
+.export-table td {
+  border: 1px solid #999;
+  padding: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.export-table th {
+  background: #dbe9ff;
+  color: #111;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #zoneExport,
+  #zoneExport * {
+    visibility: visible;
+  }
+
+  #zoneExport {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+    
   </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
