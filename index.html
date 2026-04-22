@@ -409,7 +409,89 @@
 
     boutonClique.classList.add("active");
   }
+let tacheSelectionnee = "";
 
+const donneesTaches = {
+  "Décapage et Débroussaillage (m²)": {
+    materiaux: [
+      ["Carburant", "5", "L", "30000 Ar"],
+      ["Sacs déchets verts", "10", "u", "20000 Ar"],
+      ["Eau", "100", "L", "10000 Ar"]
+    ],
+    materiels: [
+      ["Débroussailleuse", "0.40", "2.50", "Optimal"],
+      ["Machette", "0.80", "1.25", "Normal"],
+      ["Brouette", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Régage et Nivellement (m²)": {
+    materiaux: [
+      ["Piquets", "20", "u", "15000 Ar"],
+      ["Cordeau", "2", "u", "10000 Ar"],
+      ["Chaux de traçage", "1", "sac", "25000 Ar"]
+    ],
+    materiels: [
+      ["Niveau", "0.60", "1.67", "Optimal"],
+      ["Règle aluminium", "0.70", "1.43", "Normal"],
+      ["Pelle", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Fouille pour fondation (m³)": {
+    materiaux: [
+      ["Carburant", "10", "L", "60000 Ar"],
+      ["Cordeau", "2", "u", "10000 Ar"],
+      ["Piquets", "15", "u", "12000 Ar"]
+    ],
+    materiels: [
+      ["Pelle", "1.20", "0.83", "Normal"],
+      ["Pioche", "1.00", "1.00", "Optimal"],
+      ["Brouette", "0.90", "1.11", "Optimal"]
+    ]
+  },
+
+  "Remblai (m³)": {
+    materiaux: [
+      ["Terre de remblai", "8", "m<sup>3</sup>", "120000 Ar"],
+      ["Eau", "200", "L", "15000 Ar"]
+    ],
+    materiels: [
+      ["Dame manuelle", "0.80", "1.25", "Normal"],
+      ["Compacteur", "0.60", "1.67", "Optimal"],
+      ["Brouette", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Déblai et Evacuation des terres (m³)": {
+    materiaux: [
+      ["Sacs", "15", "u", "25000 Ar"],
+      ["Carburant", "12", "L", "72000 Ar"]
+    ],
+    materiels: [
+      ["Brouette", "0.70", "1.43", "Optimal"],
+      ["Camion", "0.50", "2.00", "Optimal"],
+      ["Pelle", "1.10", "0.91", "Normal"]
+    ]
+  },
+
+  "Hérissonnage (m³)": {
+    materiaux: [
+      ["Moellons", "6", "m<sup>3</sup>", "300000 Ar"],
+      ["Sable", "2", "m<sup>3</sup>", "140000 Ar"],
+      ["Eau", "150", "L", "15000 Ar"]
+    ],
+    materiels: [
+      ["Marteau", "0.90", "1.11", "Normal"],
+      ["Brouette", "0.80", "1.25", "Optimal"],
+      ["Compacteur", "0.70", "1.43", "Optimal"]
+    ]
+  }
+};
+  function mettreAJourTacheSelectionnee() {
+  tacheSelectionnee = document.getElementById("tache").value;
+}
+  
   function changerTableau(headers, rows) {
     let headHtml = "<tr>";
     headers.forEach(header => {
