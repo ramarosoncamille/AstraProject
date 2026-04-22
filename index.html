@@ -2424,6 +2424,137 @@ function remplirTaches(options) {
       "Finition décorative (m²)"
     ]);
   }
+
+  function extrairePrixNumerique(valeur) {
+  return parseFloat(String(valeur).replace(" Ar", "").replace(",", ".")) || 0;
+}
+
+function enregistrerCalcul() {
+  const tache = document.getElementById("tache").value;
+
+  if (!tache || tache === "Choisir une tâche") {
+    alert("Choisis d'abord une tâche.");
+    return;
+  }
+
+  if (!quantiteCalculee || quantiteCalculee <= 0) {
+    alert("Calcule d'abord la quantité.");
+    return;
+  }
+
+  const bloc = {
+    id: Date.now(),
+    tache: tache,
+    quantite: quantiteCalculee.toFixed(2),
+    unite: uniteCalculee,
+    rendementPersonnel: [...dernierRendementPersonnel],
+    quantitatifMateriaux: [...dernierQuantitatifMateriaux],
+    rendementMateriels: [...dernierRendementMateriels]
+  };
+
+  historiqueCalculs.push(bloc);
+  afficherHistoriqueCalculs();
+}
+
+function supprimerBlocHistorique(id) {
+  historiqueCalculs = historiqueCalculs.filter(bloc => bloc.id !== id);
+  afficherHistoriqueCalculs();
+}
+
+function calculerTotalGeneralQuantitatif() {
+  let total = 0;
+
+  historiqueCalculs.forEach(bloc => {
+    bloc.quantitatifMateriaux.forEach(ligne => {
+      total += extrairePrixNumerique(ligne[5]);
+    });
+  });
+
+  return total;
+}
+
+function creerTableauHTML(titres, lignes) {
+  let html = `
+    <div class="table-box" style="margin-top: 8px;">
+      <table>
+        <thead>
+          <tr>
+            ${titres.map(t => `<th>${t}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  lignes.forEach(ligne => {
+    html += `<tr>${ligne.map(cell => `<td>${cell}</td>`).join("")}</tr>`;
+  });
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  return html;
+}
+
+function afficherHistoriqueCalculs() {
+  const conteneur = document.getElementById("listeHistorique");
+  const totalGeneral = document.getElementById("totalGeneralQuantitatif");
+
+  conteneur.innerHTML = "";
+
+  historiqueCalculs.forEach(bloc => {
+    let prixBloc = 0;
+
+    bloc.quantitatifMateriaux.forEach(ligne => {
+      prixBloc += extrairePrixNumerique(ligne[5]);
+    });
+
+    const htmlBloc = `
+      <div class="historique-bloc">
+        <div class="historique-header">
+          <div>
+            <div class="historique-title">${bloc.tache}</div>
+            <div class="historique-meta">
+              Quantité calculée : ${bloc.quantite} ${bloc.unite}
+            </div>
+            <div class="historique-meta">
+              Total quantitatifs de ce bloc : ${prixBloc.toFixed(0)} Ar
+            </div>
+          </div>
+
+          <button class="btn-supprimer-bloc" onclick="supprimerBlocHistorique(${bloc.id})">
+            Fermer
+          </button>
+        </div>
+
+        <div class="historique-section-title">Rendement du personnel</div>
+        ${creerTableauHTML(
+          ["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"],
+          bloc.rendementPersonnel
+        )}
+
+        <div class="historique-section-title">Quantitatifs des matériaux</div>
+        ${creerTableauHTML(
+          ["Matériaux", "Quantité unitaire", "Unité", "Prix unitaire", "Quantité totale", "Prix total"],
+          bloc.quantitatifMateriaux
+        )}
+
+        <div class="historique-section-title">Rendement des matériels</div>
+        ${creerTableauHTML(
+          ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
+          bloc.rendementMateriels
+        )}
+      </div>
+    `;
+
+    conteneur.innerHTML += htmlBloc;
+  });
+
+  totalGeneral.innerHTML = `Total général quantitatifs : ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar`;
+}
+  
 </script>  
 <body>
 
