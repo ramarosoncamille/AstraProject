@@ -90,7 +90,44 @@
   transform: rotate(18deg);
   animation: shineSweep 3s infinite;
 }
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      0 0 12px rgba(87, 176, 255, 0.20),
+      0 0 28px rgba(27, 95, 191, 0.18);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow:
+      0 0 18px rgba(87, 176, 255, 0.35),
+      0 0 36px rgba(27, 95, 191, 0.28);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 12px rgba(87, 176, 255, 0.20),
+      0 0 28px rgba(27, 95, 191, 0.18);
+  }
+}
 
+@keyframes shineSweep {
+  0% {
+    left: -140%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  45% {
+    left: 140%;
+    opacity: 1;
+  }
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
     .brand-text h1 {
       font-size: 28px;
       font-weight: 800;
@@ -1485,7 +1522,7 @@ const donneesTaches = {
     ]
   },
 
-  "Pose charpente non assemblée (m³) ": {
+  "Pose charpente non assemblée (m³)": {
     materiaux: [
       ["Bois de charpente", "1", "m<sup>3</sup>", "450000 Ar"],
       ["Pointes", "3", "kg", "30000 Ar"],
@@ -1498,7 +1535,7 @@ const donneesTaches = {
     ]
   },
 
-  "Pose charpente non assemblée (m²) ": {
+  "Pose charpente non assemblée (m²)": {
     materiaux: [
       ["Bois de charpente", "0.08", "m<sup>3</sup>", "36000 Ar"],
       ["Pointes", "0.30", "kg", "3000 Ar"],
