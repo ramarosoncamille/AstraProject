@@ -441,8 +441,8 @@ const donneesTaches = {
   "Fouille pour fondation (m³)": {
     materiaux: [
       ["Carburant", "10", "L", "60000 Ar"],
-      ["Cordeau", "2", "u", "10000 Ar"],
-      ["Piquets", "15", "u", "12000 Ar"]
+      ["Piquets", "15", "u", "12000 Ar"],
+      ["Cordeau", "2", "u", "10000 Ar"]
     ],
     materiels: [
       ["Pelle", "1.20", "0.83", "Normal"],
@@ -486,8 +486,983 @@ const donneesTaches = {
       ["Brouette", "0.80", "1.25", "Optimal"],
       ["Compacteur", "0.70", "1.43", "Optimal"]
     ]
+  },
+
+  "Béton dosé à 150kg/m³ (m³)": {
+    materiaux: [
+      ["Ciment", "3", "sacs", "105000 Ar"],
+      ["Sable", "0.45", "m<sup>3</sup>", "31500 Ar"],
+      ["Gravier", "0.80", "m<sup>3</sup>", "72000 Ar"],
+      ["Eau", "120", "L", "12000 Ar"]
+    ],
+    materiels: [
+      ["Bétonnière", "0.80", "1.25", "Optimal"],
+      ["Brouette", "0.90", "1.11", "Normal"],
+      ["Vibreur", "1.20", "0.83", "Faible"]
+    ]
+  },
+
+  "Béton dosé à 250kg/m³ (m³)": {
+    materiaux: [
+      ["Ciment", "5", "sacs", "175000 Ar"],
+      ["Sable", "0.45", "m<sup>3</sup>", "31500 Ar"],
+      ["Gravier", "0.80", "m<sup>3</sup>", "72000 Ar"],
+      ["Eau", "125", "L", "12500 Ar"]
+    ],
+    materiels: [
+      ["Bétonnière", "0.70", "1.43", "Optimal"],
+      ["Brouette", "0.90", "1.11", "Normal"],
+      ["Vibreur", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Béton dosé à 300kg/m³ (m³)": {
+    materiaux: [
+      ["Ciment", "6", "sacs", "210000 Ar"],
+      ["Sable", "0.42", "m<sup>3</sup>", "29400 Ar"],
+      ["Gravier", "0.78", "m<sup>3</sup>", "70200 Ar"],
+      ["Eau", "130", "L", "13000 Ar"]
+    ],
+    materiels: [
+      ["Bétonnière", "0.68", "1.47", "Optimal"],
+      ["Brouette", "0.88", "1.14", "Normal"],
+      ["Vibreur", "0.80", "1.25", "Optimal"]
+    ]
+  },
+
+  "Béton dosé à 350kg/m³ (m³)": {
+    materiaux: [
+      ["Ciment", "7", "sacs", "245000 Ar"],
+      ["Sable", "0.40", "m<sup>3</sup>", "28000 Ar"],
+      ["Gravier", "0.75", "m<sup>3</sup>", "67500 Ar"],
+      ["Eau", "135", "L", "13500 Ar"]
+    ],
+    materiels: [
+      ["Bétonnière", "0.65", "1.54", "Optimal"],
+      ["Brouette", "0.85", "1.18", "Normal"],
+      ["Vibreur", "0.78", "1.28", "Optimal"]
+    ]
+  },
+
+  "Maçonnerie de moellon (m³)": {
+    materiaux: [
+      ["Moellons", "1.20", "m<sup>3</sup>", "60000 Ar"],
+      ["Ciment", "2", "sacs", "70000 Ar"],
+      ["Sable", "0.35", "m<sup>3</sup>", "24500 Ar"],
+      ["Eau", "80", "L", "8000 Ar"]
+    ],
+    materiels: [
+      ["Truelle", "0.90", "1.11", "Normal"],
+      ["Brouette", "1.00", "1.00", "Normal"],
+      ["Fil à plomb", "0.80", "1.25", "Optimal"]
+    ]
+  },
+
+  "Maçonnerie de briques artisanales (m³)": {
+    materiaux: [
+      ["Briques artisanales", "500", "u", "150000 Ar"],
+      ["Ciment", "2", "sacs", "70000 Ar"],
+      ["Sable", "0.30", "m<sup>3</sup>", "21000 Ar"],
+      ["Eau", "60", "L", "6000 Ar"]
+    ],
+    materiels: [
+      ["Truelle", "0.85", "1.18", "Normal"],
+      ["Brouette", "0.95", "1.05", "Normal"],
+      ["Niveau", "0.80", "1.25", "Optimal"]
+    ]
+  },
+
+  "Maçonnerie de mur en parpaing (m³)": {
+    materiaux: [
+      ["Parpaings", "125", "u", "312500 Ar"],
+      ["Ciment", "2", "sacs", "70000 Ar"],
+      ["Sable", "0.28", "m<sup>3</sup>", "19600 Ar"],
+      ["Eau", "60", "L", "6000 Ar"]
+    ],
+    materiels: [
+      ["Truelle", "0.80", "1.25", "Optimal"],
+      ["Niveau", "0.75", "1.33", "Optimal"],
+      ["Brouette", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Coffrage (m²)": {
+    materiaux: [
+      ["Planches", "1.10", "m<sup>2</sup>", "22000 Ar"],
+      ["Pointes", "0.50", "kg", "5000 Ar"],
+      ["Huile de décoffrage", "0.20", "L", "4000 Ar"],
+      ["Bois de support", "0.03", "m<sup>3</sup>", "18000 Ar"]
+    ],
+    materiels: [
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Scie", "0.90", "1.11", "Normal"],
+      ["Perceuse", "1.10", "0.91", "Faible"]
+    ]
+  },
+
+  "Ferraillage (kg)": {
+    materiaux: [
+      ["Acier HA", "1", "kg", "4500 Ar"],
+      ["Fil d'attache", "0.03", "kg", "300 Ar"],
+      ["Cales", "0.02", "u", "200 Ar"]
+    ],
+    materiels: [
+      ["Pince à ligaturer", "0.50", "2.00", "Optimal"],
+      ["Coupe-boulon", "0.80", "1.25", "Normal"],
+      ["Mètre ruban", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Enduit ciment (m²)": {
+    materiaux: [
+      ["Ciment", "0.50", "sac", "17500 Ar"],
+      ["Sable", "0.05", "m<sup>3</sup>", "3500 Ar"],
+      ["Eau", "15", "L", "1500 Ar"]
+    ],
+    materiels: [
+      ["Taloche", "0.60", "1.67", "Optimal"],
+      ["Truelle", "0.70", "1.43", "Normal"],
+      ["Échafaudage", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Revêtement en carreau faïence 15 x 15 (m²)": {
+    materiaux: [
+      ["Faïence 15 x 15", "1.05", "m<sup>2</sup>", "42000 Ar"],
+      ["Colle carrelage", "4", "kg", "12000 Ar"],
+      ["Joint", "0.30", "kg", "3000 Ar"]
+    ],
+    materiels: [
+      ["Coupe-carreaux", "0.70", "1.43", "Optimal"],
+      ["Spatule crantée", "0.80", "1.25", "Normal"],
+      ["Niveau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Carrelage en grès cerame 30 x 30 (m²)": {
+    materiaux: [
+      ["Grès cérame 30 x 30", "1.05", "m<sup>2</sup>", "52500 Ar"],
+      ["Colle carrelage", "5", "kg", "15000 Ar"],
+      ["Joint", "0.35", "kg", "3500 Ar"]
+    ],
+    materiels: [
+      ["Coupe-carreaux", "0.65", "1.54", "Optimal"],
+      ["Maillet", "0.80", "1.25", "Normal"],
+      ["Spatule crantée", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Jointoiement (m²)": {
+    materiaux: [
+      ["Mortier de joint", "0.40", "kg", "4000 Ar"],
+      ["Eau", "5", "L", "500 Ar"]
+    ],
+    materiels: [
+      ["Taloche éponge", "0.50", "2.00", "Optimal"],
+      ["Raclette", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Chape de ragréage (m²)": {
+    materiaux: [
+      ["Ciment", "0.30", "sac", "10500 Ar"],
+      ["Sable fin", "0.03", "m<sup>3</sup>", "2100 Ar"],
+      ["Eau", "10", "L", "1000 Ar"]
+    ],
+    materiels: [
+      ["Taloche", "0.60", "1.67", "Optimal"],
+      ["Règle", "0.75", "1.33", "Normal"],
+      ["Seau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Revêtement parkex 3 x 12 (m²)": {
+    materiaux: [
+      ["Lames parkex", "1.05", "m<sup>2</sup>", "63000 Ar"],
+      ["Colle", "1", "kg", "8000 Ar"],
+      ["Sous-couche", "1", "m<sup>2</sup>", "5000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.80", "1.25", "Normal"],
+      ["Maillet", "0.70", "1.43", "Optimal"],
+      ["Mètre ruban", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Plinthe en grès cérame 10 x 20 (ml)": {
+    materiaux: [
+      ["Plinthe grès cérame", "1.05", "ml", "21000 Ar"],
+      ["Colle carrelage", "0.50", "kg", "1500 Ar"],
+      ["Joint", "0.10", "kg", "1000 Ar"]
+    ],
+    materiels: [
+      ["Coupe-carreaux", "0.70", "1.43", "Optimal"],
+      ["Spatule", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Plinthe en bois de palissandre (ml)": {
+    materiaux: [
+      ["Plinthe palissandre", "1.05", "ml", "31500 Ar"],
+      ["Pointes fines", "0.05", "kg", "500 Ar"],
+      ["Vernis", "0.05", "L", "2000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.75", "1.33", "Optimal"],
+      ["Marteau", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Pose charpente non assemblée (m³) ": {
+    materiaux: [
+      ["Bois de charpente", "1", "m<sup>3</sup>", "450000 Ar"],
+      ["Pointes", "3", "kg", "30000 Ar"],
+      ["Boulons", "10", "u", "15000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.90", "1.11", "Normal"],
+      ["Marteau", "0.80", "1.25", "Optimal"],
+      ["Échelle", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Pose charpente non assemblée (m²) ": {
+    materiaux: [
+      ["Bois de charpente", "0.08", "m<sup>3</sup>", "36000 Ar"],
+      ["Pointes", "0.30", "kg", "3000 Ar"],
+      ["Boulons", "1", "u", "1500 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.85", "1.18", "Normal"],
+      ["Perceuse", "0.90", "1.11", "Normal"],
+      ["Échelle", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Pose couverture en TOG (m²)": {
+    materiaux: [
+      ["TOG", "1.05", "m<sup>2</sup>", "26250 Ar"],
+      ["Pointes à tôle", "0.10", "kg", "2000 Ar"],
+      ["Rondelles", "10", "u", "1000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.70", "1.43", "Optimal"],
+      ["Échelle", "0.90", "1.11", "Normal"],
+      ["Marteau", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Couverture en Tôle Galvabac (m²)": {
+    materiaux: [
+      ["Tôle Galvabac", "1.05", "m<sup>2</sup>", "36750 Ar"],
+      ["Vis auto-foreuse", "8", "u", "4000 Ar"],
+      ["Rondelles", "8", "u", "800 Ar"]
+    ],
+    materiels: [
+      ["Visseuse", "0.65", "1.54", "Optimal"],
+      ["Échelle", "0.90", "1.11", "Normal"],
+      ["Mètre ruban", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Couverture en TOG y compris charpente (m²)": {
+    materiaux: [
+      ["TOG", "1.05", "m<sup>2</sup>", "26250 Ar"],
+      ["Bois de charpente", "0.05", "m<sup>3</sup>", "22500 Ar"],
+      ["Pointes", "0.30", "kg", "3000 Ar"],
+      ["Vis", "6", "u", "3000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Perceuse", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Solin en TPG (ml)": {
+    materiaux: [
+      ["TPG", "1.05", "ml", "15750 Ar"],
+      ["Pointes", "0.05", "kg", "500 Ar"],
+      ["Mastic", "0.20", "cartouche", "2000 Ar"]
+    ],
+    materiels: [
+      ["Cisaille", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Pose tuiles (m²)": {
+    materiaux: [
+      ["Tuiles", "12", "u", "36000 Ar"],
+      ["Liteaux", "1.20", "ml", "6000 Ar"],
+      ["Pointes", "0.10", "kg", "1000 Ar"]
+    ],
+    materiels: [
+      ["Échelle", "0.90", "1.11", "Normal"],
+      ["Marteau", "0.80", "1.25", "Optimal"],
+      ["Scie", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Faitière en TPG (ml)": {
+    materiaux: [
+      ["TPG", "1.05", "ml", "15750 Ar"],
+      ["Fixations", "4", "u", "2000 Ar"]
+    ],
+    materiels: [
+      ["Marteau", "0.80", "1.25", "Optimal"],
+      ["Cisaille", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Noue en TPG (ml)": {
+    materiaux: [
+      ["TPG", "1.05", "ml", "15750 Ar"],
+      ["Fixations", "4", "u", "2000 Ar"]
+    ],
+    materiels: [
+      ["Cisaille", "0.85", "1.18", "Normal"],
+      ["Marteau", "0.80", "1.25", "Optimal"]
+    ]
+  },
+
+  "Planche de rive (ml)": {
+    materiaux: [
+      ["Planche de rive", "1.05", "ml", "12600 Ar"],
+      ["Pointes", "0.08", "kg", "800 Ar"],
+      ["Vernis", "0.05", "L", "2000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Goutière en TPG (ml)": {
+    materiaux: [
+      ["TPG", "1.05", "ml", "15750 Ar"],
+      ["Crochets", "2", "u", "3000 Ar"],
+      ["Fixations", "2", "u", "1000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Normal"],
+      ["Échelle", "0.90", "1.11", "Normal"],
+      ["Marteau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose plafond en isolère y compris charpente (m²)": {
+    materiaux: [
+      ["Isolère", "1.05", "m<sup>2</sup>", "26250 Ar"],
+      ["Bois de charpente", "0.04", "m<sup>3</sup>", "18000 Ar"],
+      ["Pointes", "0.20", "kg", "2000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.85", "1.18", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Échelle", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose plafond en volige sapin y compris charpente (m²)": {
+    materiaux: [
+      ["Volige sapin", "1.05", "m<sup>2</sup>", "36750 Ar"],
+      ["Bois de charpente", "0.04", "m<sup>3</sup>", "18000 Ar"],
+      ["Pointes", "0.25", "kg", "2500 Ar"],
+      ["Vernis", "0.08", "L", "3200 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Perceuse", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose faux plafond en volige varongy y compris charpente(m²)": {
+    materiaux: [
+      ["Volige varongy", "1.05", "m<sup>2</sup>", "42000 Ar"],
+      ["Bois de charpente", "0.05", "m<sup>3</sup>", "22500 Ar"],
+      ["Pointes", "0.25", "kg", "2500 Ar"],
+      ["Vernis", "0.08", "L", "3200 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.78", "1.28", "Normal"],
+      ["Marteau", "0.72", "1.39", "Optimal"],
+      ["Échelle", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose plafond en volige palissandre y compris charpente (m²)": {
+    materiaux: [
+      ["Volige palissandre", "1.05", "m<sup>2</sup>", "63000 Ar"],
+      ["Bois de charpente", "0.05", "m<sup>3</sup>", "22500 Ar"],
+      ["Pointes", "0.25", "kg", "2500 Ar"],
+      ["Vernis", "0.10", "L", "4000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.70", "1.43", "Optimal"],
+      ["Perceuse", "0.88", "1.14", "Normal"]
+    ]
+  },
+
+  "Pose plafond en volige varongy y compris charpente (m²)": {
+    materiaux: [
+      ["Volige varongy", "1.05", "m<sup>2</sup>", "42000 Ar"],
+      ["Bois de charpente", "0.05", "m<sup>3</sup>", "22500 Ar"],
+      ["Pointes", "0.25", "kg", "2500 Ar"],
+      ["Vernis", "0.08", "L", "3200 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.78", "1.28", "Normal"],
+      ["Marteau", "0.72", "1.39", "Optimal"],
+      ["Échelle", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Habillage plafond (m²)": {
+    materiaux: [
+      ["Habillage décoratif", "1.05", "m<sup>2</sup>", "31500 Ar"],
+      ["Colle", "0.50", "kg", "4000 Ar"],
+      ["Pointes", "0.10", "kg", "1000 Ar"]
+    ],
+    materiels: [
+      ["Scie", "0.85", "1.18", "Normal"],
+      ["Marteau", "0.80", "1.25", "Normal"],
+      ["Échelle", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Installation de tuyaux 20/27 (ml)": {
+    materiaux: [
+      ["Tuyau 20/27", "1.05", "ml", "12600 Ar"],
+      ["Colliers", "1", "u", "1000 Ar"],
+      ["Raccords", "0.30", "u", "3000 Ar"]
+    ],
+    materiels: [
+      ["Clé à griffe", "0.80", "1.25", "Normal"],
+      ["Coupe-tube", "0.75", "1.33", "Optimal"],
+      ["Perceuse", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Installation de tuyaux 15/21 (ml)": {
+    materiaux: [
+      ["Tuyau 15/21", "1.05", "ml", "10500 Ar"],
+      ["Colliers", "1", "u", "1000 Ar"],
+      ["Raccords", "0.30", "u", "3000 Ar"]
+    ],
+    materiels: [
+      ["Clé à griffe", "0.80", "1.25", "Normal"],
+      ["Coupe-tube", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Installation de tuyaux 12/17 (ml)": {
+    materiaux: [
+      ["Tuyau 12/17", "1.05", "ml", "8400 Ar"],
+      ["Colliers", "1", "u", "1000 Ar"],
+      ["Raccords", "0.30", "u", "3000 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.85", "1.18", "Normal"],
+      ["Coupe-tube", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Installation de robinet d'arrosage (U)": {
+    materiaux: [
+      ["Robinet d'arrosage", "1", "u", "18000 Ar"],
+      ["Raccords", "2", "u", "6000 Ar"],
+      ["Ruban téflon", "0.10", "u", "500 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.60", "1.67", "Optimal"],
+      ["Pince", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Installation de robinet de puisage (U)": {
+    materiaux: [
+      ["Robinet de puisage", "1", "u", "22000 Ar"],
+      ["Raccords", "2", "u", "6000 Ar"],
+      ["Ruban téflon", "0.10", "u", "500 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.60", "1.67", "Optimal"],
+      ["Pince", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Installation de receveur de douche (U)": {
+    materiaux: [
+      ["Receveur de douche", "1", "u", "120000 Ar"],
+      ["Tuyau PVC", "2", "ml", "12000 Ar"],
+      ["Siphon", "1", "u", "18000 Ar"],
+      ["Mortier", "1", "lot", "25000 Ar"]
+    ],
+    materiels: [
+      ["Niveau", "0.70", "1.43", "Optimal"],
+      ["Truelle", "0.85", "1.18", "Normal"],
+      ["Clé à molette", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Installation lavabo à pied en porcelaine (u)": {
+    materiaux: [
+      ["Lavabo à pied", "1", "u", "95000 Ar"],
+      ["Robinet", "1", "u", "25000 Ar"],
+      ["Siphon", "1", "u", "15000 Ar"],
+      ["Flexible", "2", "u", "12000 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.75", "1.33", "Optimal"],
+      ["Perceuse", "0.90", "1.11", "Normal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Regard en maçonnerie 50 x 50 (U)": {
+    materiaux: [
+      ["Parpaings", "20", "u", "50000 Ar"],
+      ["Ciment", "1", "sac", "35000 Ar"],
+      ["Sable", "0.10", "m<sup>3</sup>", "7000 Ar"],
+      ["Gravier", "0.08", "m<sup>3</sup>", "7200 Ar"]
+    ],
+    materiels: [
+      ["Truelle", "0.80", "1.25", "Normal"],
+      ["Brouette", "0.90", "1.11", "Normal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Installation WC (u)": {
+    materiaux: [
+      ["WC complet", "1", "u", "150000 Ar"],
+      ["Robinet d'arrêt", "1", "u", "12000 Ar"],
+      ["Flexible", "1", "u", "6000 Ar"],
+      ["Tuyau PVC", "2", "ml", "12000 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.70", "1.43", "Optimal"],
+      ["Perceuse", "0.85", "1.18", "Normal"],
+      ["Niveau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose douche (u)": {
+    materiaux: [
+      ["Mitigeur douche", "1", "u", "45000 Ar"],
+      ["Flexible douche", "1", "u", "10000 Ar"],
+      ["Support", "1", "u", "8000 Ar"]
+    ],
+    materiels: [
+      ["Clé à molette", "0.70", "1.43", "Optimal"],
+      ["Perceuse", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose d'interrupteur simple allumage (U)": {
+    materiaux: [
+      ["Interrupteur simple", "1", "u", "7000 Ar"],
+      ["Boîte d'encastrement", "1", "u", "2000 Ar"],
+      ["Fil électrique", "1", "ml", "1500 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.40", "2.50", "Optimal"],
+      ["Pince coupante", "0.60", "1.67", "Normal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Pose d'interrupteur à allumage va et vient (U)": {
+    materiaux: [
+      ["Interrupteur va-et-vient", "1", "u", "12000 Ar"],
+      ["Boîte d'encastrement", "1", "u", "2000 Ar"],
+      ["Fil électrique", "2", "ml", "3000 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.45", "2.22", "Optimal"],
+      ["Pince coupante", "0.60", "1.67", "Normal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Passage de gaines (ml)": {
+    materiaux: [
+      ["Gaine électrique", "1.05", "ml", "2100 Ar"],
+      ["Attaches", "1", "u", "500 Ar"]
+    ],
+    materiels: [
+      ["Aiguille tire-fil", "0.60", "1.67", "Optimal"],
+      ["Perceuse", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Câblage en VGV 2 x 1,5 (ml)": {
+    materiaux: [
+      ["Câble VGV 2 x 1,5", "1.05", "ml", "3675 Ar"]
+    ],
+    materiels: [
+      ["Aiguille tire-fil", "0.55", "1.82", "Optimal"],
+      ["Pince coupante", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Câblage en VGV 3 x 1,5 (ml)": {
+    materiaux: [
+      ["Câble VGV 3 x 1,5", "1.05", "ml", "4725 Ar"]
+    ],
+    materiels: [
+      ["Aiguille tire-fil", "0.55", "1.82", "Optimal"],
+      ["Pince coupante", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Câblage en VGV 2 x 2,5 (ml)": {
+    materiaux: [
+      ["Câble VGV 2 x 2,5", "1.05", "ml", "5250 Ar"]
+    ],
+    materiels: [
+      ["Aiguille tire-fil", "0.60", "1.67", "Optimal"],
+      ["Pince coupante", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Pose prises lumière bipolaire (u)": {
+    materiaux: [
+      ["Prise bipolaire", "1", "u", "8000 Ar"],
+      ["Boîte d'encastrement", "1", "u", "2000 Ar"],
+      ["Fil électrique", "1", "ml", "1500 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.45", "2.22", "Optimal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Prise force 2P+T (U)": {
+    materiaux: [
+      ["Prise force 2P+T", "1", "u", "15000 Ar"],
+      ["Boîte d'encastrement", "1", "u", "2000 Ar"],
+      ["Fil électrique", "2", "ml", "3000 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.45", "2.22", "Optimal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Globe Opalin B22 (U)": {
+    materiaux: [
+      ["Globe Opalin B22", "1", "u", "18000 Ar"],
+      ["Douille", "1", "u", "4000 Ar"],
+      ["Fil électrique", "1", "ml", "1500 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.50", "2.00", "Optimal"],
+      ["Escabeau", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Reglette monotube 1,20m (U)": {
+    materiaux: [
+      ["Reglette monotube 1,20m", "1", "u", "30000 Ar"],
+      ["Tube fluorescent", "1", "u", "12000 Ar"],
+      ["Fil électrique", "1", "ml", "1500 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.55", "1.82", "Optimal"],
+      ["Escabeau", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Pose disjoncteur (u)": {
+    materiaux: [
+      ["Disjoncteur", "1", "u", "25000 Ar"],
+      ["Peigne ou câble", "0.50", "ml", "3000 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.45", "2.22", "Optimal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Installation tableau électrique (u)": {
+    materiaux: [
+      ["Tableau électrique", "1", "u", "85000 Ar"],
+      ["Disjoncteurs", "4", "u", "100000 Ar"],
+      ["Câblage", "3", "ml", "15000 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.60", "1.67", "Optimal"],
+      ["Pince", "0.80", "1.25", "Normal"],
+      ["Testeur", "0.70", "1.43", "Normal"]
+    ]
+  },
+
+  "Pose luminaires (u)": {
+    materiaux: [
+      ["Luminaire", "1", "u", "30000 Ar"],
+      ["Fixations", "2", "u", "2000 Ar"],
+      ["Fil électrique", "1", "ml", "1500 Ar"]
+    ],
+    materiels: [
+      ["Tournevis", "0.55", "1.82", "Optimal"],
+      ["Escabeau", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Pose porte en bois 0,80 x 2,00 (u)": {
+    materiaux: [
+      ["Porte bois 0,80 x 2,00", "1", "u", "180000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "25000 Ar"],
+      ["Pointes", "0.20", "kg", "2000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en bois 0,90 x 2,00 (u)": {
+    materiaux: [
+      ["Porte bois 0,90 x 2,00", "1", "u", "190000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "25000 Ar"],
+      ["Pointes", "0.20", "kg", "2000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en bois 0,70 x 2,00 (u)": {
+    materiaux: [
+      ["Porte bois 0,70 x 2,00", "1", "u", "170000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "25000 Ar"],
+      ["Pointes", "0.20", "kg", "2000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en bois 1,00 x 0,70 (u)": {
+    materiaux: [
+      ["Porte bois 1,00 x 0,70", "1", "u", "160000 Ar"],
+      ["Paumelles", "2", "u", "10000 Ar"],
+      ["Serrure", "1", "u", "25000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Normal"],
+      ["Marteau", "0.75", "1.33", "Optimal"]
+    ]
+  },
+
+  "Pose porte en alu 0,80 x 2,00 (u)": {
+    materiaux: [
+      ["Porte alu 0,80 x 2,00", "1", "u", "260000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "30000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en alu 0,90 x 2,00 (u)": {
+    materiaux: [
+      ["Porte alu 0,90 x 2,00", "1", "u", "270000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "30000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en alu 0,70 x 2,00 (u)": {
+    materiaux: [
+      ["Porte alu 0,70 x 2,00", "1", "u", "250000 Ar"],
+      ["Paumelles", "3", "u", "15000 Ar"],
+      ["Serrure", "1", "u", "30000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose porte en alu 1,00 x 0,70 (u)": {
+    materiaux: [
+      ["Porte alu 1,00 x 0,70", "1", "u", "240000 Ar"],
+      ["Paumelles", "2", "u", "10000 Ar"],
+      ["Serrure", "1", "u", "30000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.75", "1.33", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Pose fenêtre alu 2,00 x 2,00 (u)": {
+    materiaux: [
+      ["Fenêtre alu 2,00 x 2,00", "1", "u", "320000 Ar"],
+      ["Fixations", "6", "u", "6000 Ar"],
+      ["Mastic", "1", "cartouche", "10000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.80", "1.25", "Optimal"],
+      ["Niveau", "0.85", "1.18", "Normal"],
+      ["Pistolet à mastic", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose fenêtre en bois 2,00 x 2,00 (u)": {
+    materiaux: [
+      ["Fenêtre bois 2,00 x 2,00", "1", "u", "280000 Ar"],
+      ["Fixations", "6", "u", "6000 Ar"],
+      ["Vernis", "0.30", "L", "12000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.85", "1.18", "Normal"],
+      ["Marteau", "0.80", "1.25", "Optimal"],
+      ["Niveau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Pose fenêtre en bois 120 x 120 (u)": {
+    materiaux: [
+      ["Fenêtre bois 120 x 120", "1", "u", "180000 Ar"],
+      ["Fixations", "4", "u", "4000 Ar"],
+      ["Vernis", "0.20", "L", "8000 Ar"]
+    ],
+    materiels: [
+      ["Perceuse", "0.85", "1.18", "Normal"],
+      ["Marteau", "0.80", "1.25", "Optimal"]
+    ]
+  },
+
+  "Fabrication garde-corps (ml)": {
+    materiaux: [
+      ["Fer plat/tube", "1.05", "ml", "42000 Ar"],
+      ["Électrodes", "0.20", "kg", "4000 Ar"],
+      ["Peinture antirouille", "0.10", "L", "4000 Ar"]
+    ],
+    materiels: [
+      ["Poste à souder", "0.70", "1.43", "Optimal"],
+      ["Meuleuse", "0.80", "1.25", "Normal"],
+      ["Mètre ruban", "1.00", "1.00", "Normal"]
+    ]
+  },
+
+  "Pose portail métallique (u)": {
+    materiaux: [
+      ["Portail métallique", "1", "u", "350000 Ar"],
+      ["Gonds", "2", "u", "18000 Ar"],
+      ["Peinture antirouille", "0.30", "L", "12000 Ar"]
+    ],
+    materiels: [
+      ["Poste à souder", "0.80", "1.25", "Normal"],
+      ["Perceuse", "0.85", "1.18", "Normal"],
+      ["Niveau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Grille de protection (m²)": {
+    materiaux: [
+      ["Fer carré", "1.05", "m<sup>2</sup>", "52500 Ar"],
+      ["Électrodes", "0.20", "kg", "4000 Ar"],
+      ["Peinture antirouille", "0.10", "L", "4000 Ar"]
+    ],
+    materiels: [
+      ["Poste à souder", "0.75", "1.33", "Optimal"],
+      ["Meuleuse", "0.85", "1.18", "Normal"]
+    ]
+  },
+
+  "Ferronnerie décorative (ml)": {
+    materiaux: [
+      ["Fer forgé", "1.05", "ml", "63000 Ar"],
+      ["Électrodes", "0.20", "kg", "4000 Ar"],
+      ["Peinture", "0.10", "L", "4000 Ar"]
+    ],
+    materiels: [
+      ["Poste à souder", "0.75", "1.33", "Optimal"],
+      ["Meuleuse", "0.85", "1.18", "Normal"],
+      ["Étau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Peinture intérieure (m²)": {
+    materiaux: [
+      ["Peinture intérieure", "0.15", "L", "4500 Ar"],
+      ["Sous-couche", "0.05", "L", "2000 Ar"],
+      ["Mastic", "0.05", "kg", "1000 Ar"]
+    ],
+    materiels: [
+      ["Rouleau", "0.50", "2.00", "Optimal"],
+      ["Pinceau", "0.70", "1.43", "Normal"],
+      ["Escabeau", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Peinture extérieure (m²)": {
+    materiaux: [
+      ["Peinture extérieure", "0.18", "L", "5400 Ar"],
+      ["Sous-couche", "0.06", "L", "2400 Ar"],
+      ["Mastic", "0.05", "kg", "1000 Ar"]
+    ],
+    materiels: [
+      ["Rouleau", "0.55", "1.82", "Optimal"],
+      ["Pinceau", "0.70", "1.43", "Normal"],
+      ["Échelle", "0.90", "1.11", "Normal"]
+    ]
+  },
+
+  "Application sous-couche (m²)": {
+    materiaux: [
+      ["Sous-couche", "0.10", "L", "4000 Ar"]
+    ],
+    materiels: [
+      ["Rouleau", "0.45", "2.22", "Optimal"],
+      ["Pinceau", "0.65", "1.54", "Normal"]
+    ]
+  },
+
+  "Vernis bois (m²)": {
+    materiaux: [
+      ["Vernis bois", "0.08", "L", "3200 Ar"],
+      ["Papier abrasif", "0.10", "u", "500 Ar"]
+    ],
+    materiels: [
+      ["Pinceau", "0.60", "1.67", "Optimal"],
+      ["Ponceuse", "0.80", "1.25", "Normal"]
+    ]
+  },
+
+  "Finition décorative (m²)": {
+    materiaux: [
+      ["Peinture décorative", "0.12", "L", "4800 Ar"],
+      ["Enduit décoratif", "0.30", "kg", "3000 Ar"]
+    ],
+    materiels: [
+      ["Spatule", "0.70", "1.43", "Normal"],
+      ["Rouleau décoratif", "0.60", "1.67", "Optimal"]
+    ]
   }
 };
+  
   function mettreAJourTacheSelectionnee() {
   tacheSelectionnee = document.getElementById("tache").value;
 }
@@ -795,3 +1770,4 @@ const donneesTaches = {
 
 </body>
 </html>
+ҩа
