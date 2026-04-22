@@ -643,15 +643,16 @@
         </div>
 
         <label class="field-label" for="tache">Choisir une tâche</label>
-        <select id="tache" class="select-box">
-          <option>Choisir une tâche</option>
-          <option>Décapage et Débroussaillage (m²)</option>
-          <option>Régage et Nivellement (m²)</option>
-          <option>Fouille pour fondation (m³)</option>
-          <option>Remblai (m³)</option>
-          <option>Déblai et Evacuation des terres (m³)</option>
-          <option>Hérissonnage (m³)</option>
-        </select>
+        
+       <select id="tache" class="select-box" onchange="mettreAJourTacheSelectionnee()">
+  <option>Choisir une tâche</option>
+  <option>Décapage et Débroussaillage (m²)</option>
+  <option>Régage et Nivellement (m²)</option>
+  <option>Fouille pour fondation (m³)</option>
+  <option>Remblai (m³)</option>
+  <option>Déblai et Evacuation des terres (m³)</option>
+  <option>Hérissonnage (m³)</option>
+</select>
 
 <div class="action-buttons">
   <button class="action-btn" onclick="afficherRendementPersonnel()">Rendement du personnel</button>
