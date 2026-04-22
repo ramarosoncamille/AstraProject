@@ -513,22 +513,35 @@ const formulesTaches = {
 },
 
   "Maçonnerie de moellon (m³)": {
-    champs: [{ id: "volume", label: "Volume (m³)" }],
-    unite: "m³",
-    calcul: (v) => v.volume
-  },
+      champs: [
+    { id: "longueur", label: "Longueur (m)" },
+    { id: "largeur", label: "Largeur (m)" },
+    { id: "hauteur", label: "Hauteur (m)" }
+  ],
+  unite: "m³",
+  calcul: (v) => v.longueur * v.largeur * v.hauteur
+},
 
   "Maçonnerie de briques artisanales (m³)": {
-    champs: [{ id: "volume", label: "Volume (m³)" }],
-    unite: "m³",
-    calcul: (v) => v.volume
-  },
+      champs: [
+    { id: "longueur", label: "Longueur (m)" },
+    { id: "largeur", label: "Largeur (m)" },
+    { id: "hauteur", label: "Hauteur (m)" }
+  ],
+  unite: "m³",
+  calcul: (v) => v.longueur * v.largeur * v.hauteur
+},
+
 
   "Maçonnerie de mur en parpaing (m³)": {
-    champs: [{ id: "volume", label: "Volume (m³)" }],
-    unite: "m³",
-    calcul: (v) => v.volume
-  },
+      champs: [
+    { id: "longueur", label: "Longueur (m)" },
+    { id: "largeur", label: "Largeur (m)" },
+    { id: "hauteur", label: "Hauteur (m)" }
+  ],
+  unite: "m³",
+  calcul: (v) => v.longueur * v.largeur * v.hauteur
+},
 
   "Coffrage (m²)": {
     champs: [
