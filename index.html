@@ -2215,17 +2215,19 @@ function calculerQuantiteTache() {
     document.getElementById("tableBody").innerHTML = bodyHtml;
   }
 
-  function afficherRendementPersonnel() {
-    changerTableau(
-      ["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"],
-      [
-        ["Chef de chantier", "1.20", "0.83", "92%"],
-        ["Maçon", "0.75", "1.33", "88%"],
-        ["Manœuvre", "0.50", "2.00", "85%"],
-        ["Technicien", "0.95", "1.05", "90%"]
-      ]
-    );
-  }
+ function afficherRendementPersonnel() {
+  dernierRendementPersonnel = [
+    ["Chef de chantier", "1.20", "0.83", "92%"],
+    ["Maçon", "0.75", "1.33", "88%"],
+    ["Manœuvre", "0.50", "2.00", "85%"],
+    ["Technicien", "0.95", "1.05", "90%"]
+  ];
+
+  changerTableau(
+    ["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"],
+    dernierRendementPersonnel
+  );
+}
 
   function afficherQuantitatifsMateriaux() {
   const tache = document.getElementById("tache").value;
@@ -2240,7 +2242,7 @@ function calculerQuantiteTache() {
     return;
   }
 
-  const materiauxCalcules = donneesTaches[tache].materiaux.map(ligne => {
+  dernierQuantitatifMateriaux = donneesTaches[tache].materiaux.map(ligne => {
     const nom = ligne[0];
     const quantiteUnitaire = parseFloat(String(ligne[1]).replace(",", "."));
     const unite = ligne[2];
@@ -2261,7 +2263,7 @@ function calculerQuantiteTache() {
 
   changerTableau(
     ["Matériaux", "Quantité unitaire", "Unité", "Prix unitaire", "Quantité totale", "Prix total"],
-    materiauxCalcules
+    dernierQuantitatifMateriaux
   );
 }
   function afficherRendementMateriels() {
@@ -2272,12 +2274,15 @@ function calculerQuantiteTache() {
     return;
   }
 
+  dernierRendementMateriels = donneesTaches[tache].materiels.map(ligne => {
+    return [...ligne];
+  });
+
   changerTableau(
     ["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"],
-    donneesTaches[tache].materiels
+    dernierRendementMateriels
   );
 }
-
 function remplirTaches(options) {
   let html = `<option>Choisir une tâche</option>`;
   options.forEach(option => {
