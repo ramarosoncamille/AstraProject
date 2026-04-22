@@ -2427,6 +2427,10 @@ function remplirTaches(options) {
     Calculer la quantité
   </button>
 
+  <button class="action-btn" style="margin-top:15px; max-width:320px;" onclick="enregistrerCalcul()">
+  Enregistrer ce calcul
+</button>
+  
   <div id="resultatQuantite" style="margin-top:12px; color:#dbeeff; font-weight:700;">
     Quantité calculée : -
   </div>
@@ -2480,6 +2484,14 @@ function remplirTaches(options) {
                <div class="footer-note">
          © AstraStruct
         </div>
+        <div id="historiqueCalculs" class="panel" style="margin-top: 24px;">
+  <div class="panel-top">
+    <h2 style="font-size:24px;">Historique des calculs</h2>
+    <div class="mini-info" id="totalGeneralQuantitatif">Total général quantitatifs : 0 Ar</div>
+  </div>
+
+  <div id="listeHistorique"></div>
+</div>
       </section>
     </main>
   </div>
