@@ -1971,7 +1971,16 @@ function remplirTaches(options) {
         <label class="field-label" for="tache">Choisir une tâche</label>
         
        <select id="tache" class="select-box" onchange="mettreAJourTacheSelectionnee()">
-         <div id="zoneCalcul" class="panel" style="margin-top: 18px; padding: 18px;">
+  <option>Choisir une tâche</option>
+  <option>Décapage et Débroussaillage (m²)</option>
+  <option>Régage et Nivellement (m²)</option>
+  <option>Fouille pour fondation (m³)</option>
+  <option>Remblai (m³)</option>
+  <option>Déblai et Evacuation des terres (m³)</option>
+  <option>Hérissonnage (m³)</option>
+</select>
+
+<div id="zoneCalcul" class="panel" style="margin-top: 18px; padding: 18px;">
   <h3 style="color:#7fc4ff; margin-bottom:12px;">Calcul de quantitatif</h3>
 
   <div id="inputsCalcul" style="display:flex; gap:12px; flex-wrap:wrap;">
@@ -1985,15 +1994,6 @@ function remplirTaches(options) {
     Quantité calculée : -
   </div>
 </div>
-         
-  <option>Choisir une tâche</option>
-  <option>Décapage et Débroussaillage (m²)</option>
-  <option>Régage et Nivellement (m²)</option>
-  <option>Fouille pour fondation (m³)</option>
-  <option>Remblai (m³)</option>
-  <option>Déblai et Evacuation des terres (m³)</option>
-  <option>Hérissonnage (m³)</option>
-</select>
 
 <div class="action-buttons">
   <button class="action-btn" onclick="afficherRendementPersonnel()">Rendement du personnel</button>
