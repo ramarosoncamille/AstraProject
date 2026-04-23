@@ -2864,6 +2864,8 @@ function construireContenuExport() {
 }
 
 async function telechargerPDF() {
+  marquerEssaiCommeUtilise();
+
   construireContenuExport();
 
   const zone = document.getElementById("zoneExport");
@@ -2900,18 +2902,25 @@ async function telechargerPDF() {
 
   pdf.save("AstraStruct_Rapport.pdf");
   zone.style.display = "none";
-}
 
+  if (!currentUser.subscription) {
+    showScreen("screen-subscription");
+  }
+}
+  
 function imprimerResultats() {
+  marquerEssaiCommeUtilise();
+
   construireContenuExport();
   const zone = document.getElementById("zoneExport");
   zone.style.display = "block";
   window.print();
   zone.style.display = "none";
-}
 
-let currentUser = null;
-let selectedPlan = null;
+  if (!currentUser.subscription) {
+    showScreen("screen-subscription");
+  }
+}
 
 function showScreen(screenId) {
   document.getElementById("screen-auth").style.display = "none";
@@ -3036,6 +3045,12 @@ function confirmPayment() {
   alert("Abonnement activé : " + selectedPlan);
   showScreen("screen-app");
 }
+
+  function logoutUser() {
+  currentUser = null;
+  selectedPlan = null;
+  showScreen("screen-auth");
+}
   
 </script>  
 <body>
@@ -3127,7 +3142,10 @@ function confirmPayment() {
 
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
+  <div style="display:flex; gap:10px; align-items:center;">
   <div class="top-badge">Plateforme professionnelle</div>
+  <button class="action-btn" style="min-width:auto; padding:10px 14px;" onclick="logoutUser()">Déconnexion</button>
+</div>
 </header>
 
   <div class="container">
