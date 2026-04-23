@@ -477,76 +477,86 @@
 }
 
     .export-page {
-  background: white;
-  color: black;
-  padding: 30px;
-  width: 1000px;
-  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+  padding: 24px 26px;
+  width: 794px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0 auto;
 }
-
+    
 .export-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #1b5eb0;
-  padding-bottom: 14px;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #1b5eb0;
 }
-
+    
 .export-header img {
-  width: 70px;
-  height: 70px;
+  width: 58px;
+  height: 58px;
   object-fit: cover;
+  border-radius: 10px;
 }
-
+    
 .export-title h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   color: #1b5eb0;
+  font-weight: 800;
 }
 
 .export-title p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #333;
-  letter-spacing: 1px;
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 0.6px;
 }
 
 .export-section-title {
-  margin-top: 22px;
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 16px;
   color: #1b5eb0;
-  font-weight: bold;
+  font-weight: 700;
+  padding-left: 8px;
+  border-left: 4px solid #1b5eb0;
 }
 
 .export-meta {
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 6px;
+  font-size: 13px;
   color: #222;
+  line-height: 1.45;
 }
 
 .export-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
 }
-
+    
 .export-table th,
 .export-table td {
-  border: 1px solid #999;
-  padding: 8px;
+  border: 1px solid #cfcfcf;
+  padding: 7px 8px;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   color: #000 !important;
 }
+    
 .export-table td * {
   color: #000 !important;
 }
 
 .export-table th {
-  background: #dbe9ff;
+  background: #e8f1ff;
   color: #111;
+  font-weight: 700;
 }
 
 @media print {
@@ -2862,10 +2872,11 @@ function construireContenuExport() {
         </div>
       </div>
 
-      <div class="export-meta"><strong>Tâche actuelle :</strong> ${tache}</div>
-      <div class="export-meta"><strong>Quantité actuelle :</strong> ${quantiteCalculee ? quantiteCalculee.toFixed(2) : "0.00"} ${uniteCalculee || ""}</div>
-      <div class="export-meta"><strong>Total général quantitatifs :</strong> ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar</div>
-
+      <div style="background:#f7faff; border:1px solid #d6e4f7; border-radius:10px; padding:12px 14px; margin-bottom:14px;">
+  <div class="export-meta"><strong>Tâche actuelle :</strong> ${tache}</div>
+  <div class="export-meta"><strong>Quantité actuelle :</strong> ${quantiteCalculee ? quantiteCalculee.toFixed(2) : "0.00"} ${uniteCalculee || ""}</div>
+  <div class="export-meta"><strong>Total général quantitatifs :</strong> ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar</div>
+</div>
       ${contenuHistorique || "<div class='export-meta'>Aucun calcul enregistré.</div>"}
     </div>
   `;
