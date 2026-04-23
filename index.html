@@ -2885,26 +2885,142 @@ function construireContenuExport() {
 async function telechargerPDF() {
   marquerEssaiCommeUtilise();
 
-  construireContenuExport();
-
-  const zone = document.getElementById("zoneExport");
-  if (!zone) {
-    alert("Zone export introuvable");
-    return;
-  }
-
-  zone.style.display = "block";
-
-  const canvas = await html2canvas(zone);
-  const imgData = canvas.toDataURL("image/png");
-
   const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF();
+  const pdf = new jsPDF("p", "mm", "a4");
 
-  pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
-  pdf.save("AstraStruct.pdf");
+  let y = 15;
 
-  zone.style.display = "none";
+  // Logo
+  const logo = new Image();
+  logo.src = "logo.png";
+
+  logo.onload = function () {
+    pdf.addImage(logo, "PNG", 14, 10, 18, 18);
+
+    // En-tête
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(20);
+    pdf.setTextColor(27, 94, 176);
+    pdf.text("AstraStruct", 38, 18);
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+    pdf.setTextColor(90, 90, 90);
+    pdf.text("BTP PREMIUM - Rapport des calculs", 38, 24);
+
+    pdf.setDrawColor(27, 94, 176);
+    pdf.setLineWidth(0.8);
+    pdf.line(14, 32, 196, 32);
+
+    y = 42;
+
+    // Bloc résumé
+    pdf.setFillColor(245, 248, 252);
+    pdf.setDrawColor(220, 228, 238);
+    pdf.roundedRect(14, y, 182, 24, 3, 3, "FD");
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(10);
+    pdf.setTextColor(20, 20, 20);
+    pdf.text(`Tâche actuelle : ${document.getElementById("tache").value}`, 18, y + 7);
+    pdf.text(`Quantité actuelle : ${quantiteCalculee ? quantiteCalculee.toFixed(2) : "0.00"} ${uniteCalculee || ""}`, 18, y + 14);
+    pdf.text(`Total général quantitatifs : ${calculerTotalGeneralQuantitatif().toFixed(0)} Ar`, 18, y + 21);
+
+    y += 34;
+
+    if (historiqueCalculs.length === 0) {
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(11);
+      pdf.text("Aucun calcul enregistré.", 14, y);
+      pdf.save("AstraStruct_Rapport.pdf");
+      return;
+    }
+
+    historiqueCalculs.forEach((bloc, index) => {
+      if (index > 0) y += 8;
+
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(14);
+      pdf.setTextColor(27, 94, 176);
+      pdf.text(bloc.tache, 14, y);
+
+      y += 8;
+
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.setTextColor(30, 30, 30);
+      pdf.text(`Quantité calculée : ${bloc.quantite} ${bloc.unite}`, 14, y);
+
+      let prixBloc = 0;
+      bloc.quantitatifMateriaux.forEach(ligne => {
+        prixBloc += extrairePrixNumerique(ligne[5]);
+      });
+
+      y += 6;
+      pdf.text(`Total quantitatifs : ${prixBloc.toFixed(0)} Ar`, 14, y);
+
+      y += 8;
+
+      // Rendement du personnel
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(11);
+      pdf.setTextColor(27, 94, 176);
+      pdf.text("Rendement du personnel", 14, y);
+      y += 3;
+
+      pdf.autoTable({
+        startY: y,
+        head: [["Rôle", "Rendement (h/U)", "Production (U/h)", "Efficacité"]],
+        body: bloc.rendementPersonnel,
+        theme: "grid",
+        styles: { fontSize: 9, textColor: [0, 0, 0], cellPadding: 2.5 },
+        headStyles: { fillColor: [232, 241, 255], textColor: [0, 0, 0] },
+        margin: { left: 14, right: 14 }
+      });
+
+      y = pdf.lastAutoTable.finalY + 8;
+
+      // Quantitatifs matériaux
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(11);
+      pdf.setTextColor(27, 94, 176);
+      pdf.text("Quantitatifs des matériaux", 14, y);
+      y += 3;
+
+      pdf.autoTable({
+        startY: y,
+        head: [["Matériaux", "Qté unitaire", "Unité", "Prix unitaire", "Qté totale", "Prix total"]],
+        body: bloc.quantitatifMateriaux,
+        theme: "grid",
+        styles: { fontSize: 8.5, textColor: [0, 0, 0], cellPadding: 2.3 },
+        headStyles: { fillColor: [232, 241, 255], textColor: [0, 0, 0] },
+        margin: { left: 14, right: 14 }
+      });
+
+      y = pdf.lastAutoTable.finalY + 8;
+
+      // Rendement matériels
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(11);
+      pdf.setTextColor(27, 94, 176);
+      pdf.text("Rendement des matériels", 14, y);
+      y += 3;
+
+      pdf.autoTable({
+        startY: y,
+        head: [["Matériel", "Rendement (h/U)", "Production (U/h)", "Utilisation"]],
+        body: bloc.rendementMateriels,
+        theme: "grid",
+        styles: { fontSize: 9, textColor: [0, 0, 0], cellPadding: 2.5 },
+        headStyles: { fillColor: [232, 241, 255], textColor: [0, 0, 0] },
+        margin: { left: 14, right: 14 }
+      });
+
+      y = pdf.lastAutoTable.finalY + 12;
+    });
+
+    pdf.save("AstraStruct_Rapport.pdf");
+  };
 }
   
 function imprimerResultats() {
