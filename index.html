@@ -690,6 +690,14 @@
 let tacheSelectionnee = "";
 let quantiteCalculee = 0;
 let uniteCalculee = "";
+
+let currentUser = null;
+let selectedPlan = null;
+
+  function marquerEssaiCommeUtilise() {
+  // version simple si pas encore connecté
+  localStorage.setItem("essai_utilise", "oui");
+}
   
 let historiqueCalculs = [];
 let dernierRendementPersonnel = [];
@@ -2869,57 +2877,39 @@ async function telechargerPDF() {
   construireContenuExport();
 
   const zone = document.getElementById("zoneExport");
+  if (!zone) {
+    alert("Zone export introuvable");
+    return;
+  }
+
   zone.style.display = "block";
 
-  const canvas = await html2canvas(zone, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: "#ffffff"
-  });
-
+  const canvas = await html2canvas(zone);
   const imgData = canvas.toDataURL("image/png");
+
   const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF("p", "mm", "a4");
+  const pdf = new jsPDF();
 
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-  const pdfHeight = pdf.internal.pageSize.getHeight();
+  pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
+  pdf.save("AstraStruct.pdf");
 
-  const imgWidth = pdfWidth;
-  const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-  let heightLeft = imgHeight;
-  let position = 0;
-
-  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-  heightLeft -= pdfHeight;
-
-  while (heightLeft > 0) {
-    position = heightLeft - imgHeight;
-    pdf.addPage();
-    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pdfHeight;
-  }
-
-  pdf.save("AstraStruct_Rapport.pdf");
   zone.style.display = "none";
-
-  if (!currentUser.subscription) {
-    showScreen("screen-subscription");
-  }
 }
   
 function imprimerResultats() {
   marquerEssaiCommeUtilise();
 
   construireContenuExport();
+
   const zone = document.getElementById("zoneExport");
+  if (!zone) {
+    alert("Zone export introuvable");
+    return;
+  }
+
   zone.style.display = "block";
   window.print();
   zone.style.display = "none";
-
-  if (!currentUser.subscription) {
-    showScreen("screen-subscription");
-  }
 }
 
 function showScreen(screenId) {
@@ -3051,6 +3041,14 @@ function confirmPayment() {
   selectedPlan = null;
   showScreen("screen-auth");
 }
+
+  window.onload = function() {
+  const essai = localStorage.getItem("essai_utilise");
+
+  if (essai === "oui") {
+    alert("Essai gratuit terminé. Passez à l'abonnement.");
+  }
+};
   
 </script>  
 <body>
