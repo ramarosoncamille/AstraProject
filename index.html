@@ -567,6 +567,104 @@
     width: 100%;
   }
 }
+
+    .auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(180deg, rgba(8,16,30,0.95), rgba(10,20,37,0.96));
+  border: 1px solid rgba(105, 175, 255, 0.14);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-logo img {
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.auth-logo h1 {
+  color: #7fc4ff;
+  margin-bottom: 5px;
+}
+
+.auth-logo p {
+  color: #cfe7ff;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #102948;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  background: #1b5eb0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-form input {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(112, 186, 255, 0.18);
+  background: #08111f;
+  color: white;
+}
+
+.auth-form button,
+.auth-card button {
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #13345c, #1b5eb0);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plans {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.plan-card {
+  border: 1px solid rgba(106, 177, 255, 0.15);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255,255,255,0.02);
+}
     
   </style>
 
@@ -2811,10 +2909,211 @@ function imprimerResultats() {
   window.print();
   zone.style.display = "none";
 }
+
+let currentUser = null;
+let selectedPlan = null;
+
+function showScreen(screenId) {
+  document.getElementById("screen-auth").style.display = "none";
+  document.getElementById("screen-trial").style.display = "none";
+  document.getElementById("screen-subscription").style.display = "none";
+  document.getElementById("screen-app").style.display = "none";
+
+  document.getElementById(screenId).style.display = "flex";
+  if (screenId === "screen-app") {
+    document.getElementById(screenId).style.display = "block";
+  }
+}
+
+function showAuthTab(type) {
+  document.getElementById("login-form").style.display = type === "login" ? "flex" : "none";
+  document.getElementById("register-form").style.display = type === "register" ? "flex" : "none";
+
+  const tabs = document.querySelectorAll(".auth-tab");
+  tabs.forEach(tab => tab.classList.remove("active"));
+
+  if (type === "login") {
+    tabs[0].classList.add("active");
+  } else {
+    tabs[1].classList.add("active");
+  }
+}
+
+function registerUser() {
+  const name = document.getElementById("register-name").value.trim();
+  const email = document.getElementById("register-email").value.trim();
+  const password = document.getElementById("register-password").value.trim();
+
+  if (!name || !email || !password) {
+    alert("Veuillez remplir tous les champs.");
+    return;
+  }
+
+  const users = JSON.parse(localStorage.getItem("astrastuct_users") || "[]");
+
+  const existingUser = users.find(user => user.email === email);
+  if (existingUser) {
+    alert("Cet email est déjà utilisé.");
+    return;
+  }
+
+  const newUser = {
+    name,
+    email,
+    password,
+    freeTrialUsed: false,
+    subscription: null
+  };
+
+  users.push(newUser);
+  localStorage.setItem("astrastuct_users", JSON.stringify(users));
+
+  alert("Inscription réussie.");
+  showAuthTab("login");
+}
+
+function loginUser() {
+  const email = document.getElementById("login-email").value.trim();
+  const password = document.getElementById("login-password").value.trim();
+
+  const users = JSON.parse(localStorage.getItem("astrastuct_users") || "[]");
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if (!user) {
+    alert("Email ou mot de passe incorrect.");
+    return;
+  }
+
+  currentUser = user;
+
+  if (!user.freeTrialUsed) {
+    showScreen("screen-trial");
+  } else if (!user.subscription) {
+    showScreen("screen-subscription");
+  } else {
+    showScreen("screen-app");
+  }
+}
+
+function startFreeTrial() {
+  const users = JSON.parse(localStorage.getItem("astrastuct_users") || "[]");
+  const index = users.findIndex(u => u.email === currentUser.email);
+
+  if (index !== -1) {
+    users[index].freeTrialUsed = true;
+    localStorage.setItem("astrastuct_users", JSON.stringify(users));
+    currentUser = users[index];
+  }
+
+  showScreen("screen-app");
+}
+
+function goToSubscription() {
+  showScreen("screen-subscription");
+}
+
+function selectPlan(plan) {
+  selectedPlan = plan;
+  document.getElementById("payment-box").style.display = "block";
+  document.getElementById("selected-plan-text").innerText = "Formule sélectionnée : " + plan;
+}
+
+function confirmPayment() {
+  if (!selectedPlan) {
+    alert("Choisissez une formule.");
+    return;
+  }
+
+  const users = JSON.parse(localStorage.getItem("astrastuct_users") || "[]");
+  const index = users.findIndex(u => u.email === currentUser.email);
+
+  if (index !== -1) {
+    users[index].subscription = selectedPlan;
+    localStorage.setItem("astrastuct_users", JSON.stringify(users));
+    currentUser = users[index];
+  }
+
+  alert("Abonnement activé : " + selectedPlan);
+  showScreen("screen-app");
+}
   
 </script>  
 <body>
 
+<div id="screen-auth" class="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <img src="logo.png" alt="Logo AstraStruct">
+      <h1>AstraStruct</h1>
+      <p>Connexion et inscription</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="showAuthTab('login')">Connexion</button>
+      <button class="auth-tab" onclick="showAuthTab('register')">Inscription</button>
+    </div>
+
+    <div id="login-form" class="auth-form">
+      <input type="email" id="login-email" placeholder="Adresse email">
+      <input type="password" id="login-password" placeholder="Mot de passe">
+      <button onclick="loginUser()">Se connecter</button>
+    </div>
+
+    <div id="register-form" class="auth-form" style="display:none;">
+      <input type="text" id="register-name" placeholder="Nom complet">
+      <input type="email" id="register-email" placeholder="Adresse email">
+      <input type="password" id="register-password" placeholder="Mot de passe">
+      <button onclick="registerUser()">Créer un compte</button>
+    </div>
+  </div>
+</div>
+
+<div id="screen-trial" class="auth-screen" style="display:none;">
+  <div class="auth-card">
+    <h2>Essai gratuit</h2>
+    <p>Vous avez droit à un seul essai complet gratuit de l'application.</p>
+    <button onclick="startFreeTrial()">Commencer l'essai gratuit</button>
+    <button onclick="goToSubscription()">Passer à l'abonnement</button>
+  </div>
+</div>
+
+<div id="screen-subscription" class="auth-screen" style="display:none;">
+  <div class="auth-card">
+    <h2>Abonnement AstraStruct</h2>
+    <p>Choisissez votre formule</p>
+
+    <div class="plans">
+      <div class="plan-card">
+        <h3>Journalier</h3>
+        <p>Accès 1 jour</p>
+        <strong>Prix à définir</strong>
+        <button onclick="selectPlan('journalier')">Choisir</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Mensuel</h3>
+        <p>Accès 30 jours</p>
+        <strong>Prix à définir</strong>
+        <button onclick="selectPlan('mensuel')">Choisir</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Forfaitaire</h3>
+        <p>Accès premium</p>
+        <strong>Prix à définir</strong>
+        <button onclick="selectPlan('forfaitaire')">Choisir</button>
+      </div>
+    </div>
+
+    <div id="payment-box" style="display:none; margin-top:20px;">
+      <h3>Paiement</h3>
+      <p id="selected-plan-text"></p>
+      <button onclick="confirmPayment()">Confirmer le paiement</button>
+    </div>
+  </div>
+</div>
+  <div id="screen-app" style="display:none;">
+  
  <header class="header">
   <div class="brand">
     <div class="logo-icon scintille">
