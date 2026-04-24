@@ -3187,16 +3187,17 @@ function confirmPayment() {
   function logoutUser() {
   currentUser = null;
   selectedPlan = null;
+
+  document.getElementById("login-email").value = "";
+  document.getElementById("login-password").value = "";
+
+  document.getElementById("register-name").value = "";
+  document.getElementById("register-email").value = "";
+  document.getElementById("register-password").value = "";
+
+  showAuthTab("login");
   showScreen("screen-auth");
 }
-
-  window.onload = function() {
-  const essai = localStorage.getItem("essai_utilise");
-
-  if (essai === "oui") {
-    alert("Essai gratuit terminé. Passez à l'abonnement.");
-  }
-};
   
 </script>  
 <body>
