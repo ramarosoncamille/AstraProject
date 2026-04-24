@@ -3025,8 +3025,6 @@ function telechargerPDF() {
 }
   
 function imprimerResultats() {
-  marquerEssaiCommeUtilise();
-
   construireContenuExport();
 
   const zone = document.getElementById("zoneExport");
@@ -3036,8 +3034,30 @@ function imprimerResultats() {
   }
 
   zone.style.display = "block";
-  window.print();
-  zone.style.display = "none";
+
+  const logo = zone.querySelector("img");
+
+  if (!logo) {
+    window.print();
+    zone.style.display = "none";
+    return;
+  }
+
+  const lancerImpression = () => {
+    setTimeout(() => {
+      window.print();
+      zone.style.display = "none";
+    }, 300);
+  };
+
+  if (logo.complete && logo.naturalWidth > 0) {
+    lancerImpression();
+  } else {
+    logo.onload = lancerImpression;
+    logo.onerror = () => {
+      alert("Le logo n'a pas pu être chargé pour l'impression.");
+    };
+  }
 }
 
 function showScreen(screenId) {
