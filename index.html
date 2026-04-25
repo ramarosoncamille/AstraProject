@@ -324,6 +324,16 @@
       transition: 0.25s ease;
       box-shadow: 0 10px 20px rgba(12, 36, 75, 0.28);
     }
+    /* 🔴 bouton enregistrer */
+.action-btn.save {
+  background: linear-gradient(135deg, #8b0000, #ff3b3b);
+  box-shadow: 0 10px 20px rgba(255, 60, 60, 0.3);
+}
+
+.action-btn.save:hover {
+  background: linear-gradient(135deg, #a80000, #ff5c5c);
+  transform: translateY(-3px);
+}
     /* 🔥 BOUTONS EXPORT VERTS */
 .action-btn.export {
   background: linear-gradient(135deg, #1e7e34, #28a745);
@@ -3409,10 +3419,6 @@ function confirmPayment() {
   <button class="action-btn" style="margin-top:15px; max-width:260px;" onclick="calculerQuantiteTache()">
     Calculer la quantité
   </button>
-
-  <button class="action-btn" style="margin-top:15px; max-width:320px;" onclick="enregistrerCalcul()">
-  Enregistrer ce calcul
-</button>
   
   <div id="resultatQuantite" style="margin-top:12px; color:#dbeeff; font-weight:700;">
     Quantité calculée : -
@@ -3463,6 +3469,10 @@ function confirmPayment() {
     </tbody>
   </table>
 </div>
+
+<button class="action-btn" style="margin-top:15px; max-width:320px;" onclick="enregistrerCalcul()">
+  Enregistrer ce calcul
+</button>
 
 <div id="zoneExport" style="display:none;"></div>
         
