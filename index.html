@@ -3365,12 +3365,9 @@ function confirmPayment() {
       <p>BTP Premium</p>
     </div>
   </div>
-
   <div style="display:flex; align-items:center; gap:12px; margin-left:auto;">
-    
-    <div class="top-badge">Plateforme professionnelle</div>
-
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <div class="top-badge">Plateforme professionnelle</div>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   </div>
 </div>
 </header>
@@ -3388,6 +3385,12 @@ function confirmPayment() {
 <button class="menu-btn" onclick="activerBouton(this); chargerElectricite()">Electricité</button>
 <button class="menu-btn" onclick="activerBouton(this); chargerMenuiserieFerronnerie()">Menuiserie et Ferronnerie</button>
 <button class="menu-btn" onclick="activerBouton(this); chargerFinitionPeinture()">Finition et Peinture</button>
+
+<div style="margin-top:auto; padding-top:20px;">
+  <button class="menu-btn" style="background:linear-gradient(135deg,#7a1f1f,#b53030);" onclick="logoutUser()">
+    🔓 Déconnexion
+  </button>
+</div>
     </aside>
 
     <main class="main-content">
