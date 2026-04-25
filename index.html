@@ -2689,20 +2689,57 @@ function enregistrerCalcul() {
     return;
   }
 
+  if (!donneesTaches[tache]) {
+    alert("Aucune donnée trouvée pour cette tâche.");
+    return;
+  }
+
+  // 1. Générer automatiquement rendement du personnel
+  const rendementPersonnelAuto = [
+    ["Chef de chantier", "1.20", "0.83", "92%"],
+    ["Maçon", "0.75", "1.33", "88%"],
+    ["Manœuvre", "0.50", "2.00", "85%"],
+    ["Technicien", "0.95", "1.05", "90%"]
+  ];
+
+  // 2. Générer automatiquement quantitatifs matériaux
+  const quantitatifMateriauxAuto = donneesTaches[tache].materiaux.map(ligne => {
+    const nom = ligne[0];
+    const quantiteUnitaire = parseFloat(String(ligne[1]).replace(",", "."));
+    const unite = ligne[2];
+    const prixUnitaire = parseFloat(String(ligne[3]).replace(" Ar", "").replace(",", "."));
+
+    const quantiteTotale = quantiteUnitaire * quantiteCalculee;
+    const prixTotal = prixUnitaire * quantiteCalculee;
+
+    return [
+      nom,
+      quantiteUnitaire.toFixed(2),
+      unite,
+      `${prixUnitaire.toFixed(0)} Ar`,
+      quantiteTotale.toFixed(2),
+      `${prixTotal.toFixed(0)} Ar`
+    ];
+  });
+
+  // 3. Générer automatiquement rendement matériels
+  const rendementMaterielsAuto = donneesTaches[tache].materiels.map(ligne => {
+    return [...ligne];
+  });
+
   const bloc = {
     id: Date.now(),
     tache: tache,
     quantite: quantiteCalculee.toFixed(2),
     unite: uniteCalculee,
-    rendementPersonnel: [...dernierRendementPersonnel],
-    quantitatifMateriaux: [...dernierQuantitatifMateriaux],
-    rendementMateriels: [...dernierRendementMateriels]
+    rendementPersonnel: rendementPersonnelAuto,
+    quantitatifMateriaux: quantitatifMateriauxAuto,
+    rendementMateriels: rendementMaterielsAuto
   };
 
   historiqueCalculs.push(bloc);
   afficherHistoriqueCalculs();
 }
-
 function supprimerBlocHistorique(id) {
   historiqueCalculs = historiqueCalculs.filter(bloc => bloc.id !== id);
   afficherHistoriqueCalculs();
