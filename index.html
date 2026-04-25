@@ -3424,15 +3424,6 @@ function confirmPayment() {
   <button class="action-btn" onclick="afficherQuantitatifsMateriaux()">Quantitatifs des matériaux</button>
   <button class="action-btn" onclick="afficherRendementMateriels()">Rendement matériels</button>
 </div>  
-
-<div id="historique-container"></div>
-        
-<div class="action-buttons export-buttons">
-  <button class="action-btn export" onclick="telechargerPDF()">📄 Télécharger PDF</button>
-  <button class="action-btn export" onclick="imprimerResultats()">🖨️ Imprimer</button>
-</div>
-
-
         
   <div class="table-box">
   <table id="dynamicTable">
@@ -3473,10 +3464,6 @@ function confirmPayment() {
   </table>
 </div>
 
-               <div class="footer-note">
-         © AstraStruct
-        </div>
-
 <div id="zoneExport" style="display:none;"></div>
         
         <div id="historiqueCalculs" class="panel" style="margin-top: 24px;">
@@ -3487,6 +3474,15 @@ function confirmPayment() {
 
   <div id="listeHistorique"></div>
 </div>
+        
+        <div class="action-buttons export-buttons">
+  <button class="action-btn export" onclick="telechargerPDF()">📄 Télécharger PDF</button>
+  <button class="action-btn export" onclick="imprimerResultats()">🖨️ Imprimer</button>
+</div>
+         <div class="footer-note">
+         © AstraStruct
+        </div>
+        
       </section>
     </main>
   </div>
