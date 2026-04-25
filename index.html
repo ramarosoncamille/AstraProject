@@ -688,16 +688,33 @@
   function toggleMenu() {
     document.querySelector(".sidebar").classList.toggle("active");
   }
+  document.addEventListener("click", function(event) {
+  const sidebar = document.querySelector(".sidebar");
+  const toggleBtn = document.querySelector(".menu-toggle");
 
-  function activerBouton(boutonClique) {
-    const boutons = document.querySelectorAll(".menu-btn");
-
-    boutons.forEach(bouton => {
-      bouton.classList.remove("active");
-    });
-
-    boutonClique.classList.add("active");
+  // Si on clique en dehors du menu ET pas sur le bouton
+  if (
+    sidebar.classList.contains("active") &&
+    !sidebar.contains(event.target) &&
+    !toggleBtn.contains(event.target)
+  ) {
+    sidebar.classList.remove("active");
   }
+});
+
+ function activerBouton(boutonClique) {
+  const boutons = document.querySelectorAll(".menu-btn");
+
+  boutons.forEach(bouton => {
+    bouton.classList.remove("active");
+  });
+
+  boutonClique.classList.add("active");
+
+  // 🔥 fermer le menu après clic
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.classList.remove("active");
+}
 let tacheSelectionnee = "";
 let quantiteCalculee = 0;
 let uniteCalculee = "";
