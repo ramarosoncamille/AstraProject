@@ -324,6 +324,23 @@
       transition: 0.25s ease;
       box-shadow: 0 10px 20px rgba(12, 36, 75, 0.28);
     }
+    /* 🔥 BOUTONS EXPORT VERTS */
+.action-btn.export {
+  background: linear-gradient(135deg, #1e7e34, #28a745);
+  box-shadow: 0 10px 20px rgba(40, 167, 69, 0.25);
+}
+
+.action-btn.export:hover {
+  background: linear-gradient(135deg, #24963f, #34d058);
+  transform: translateY(-3px);
+}
+
+/* centrer sous historique */
+.export-buttons {
+  justify-content: center;
+  margin-top: 20px;
+}
+    
 
     .action-btn:hover {
       transform: translateY(-3px);
@@ -3406,8 +3423,10 @@ function confirmPayment() {
   <button class="action-btn" onclick="afficherRendementPersonnel()">Rendement du personnel</button>
   <button class="action-btn" onclick="afficherQuantitatifsMateriaux()">Quantitatifs des matériaux</button>
   <button class="action-btn" onclick="afficherRendementMateriels()">Rendement matériels</button>
-  <button class="action-btn" onclick="telechargerPDF()">Télécharger PDF</button>
-  <button class="action-btn" onclick="imprimerResultats()">Imprimer</button>
+</div>  
+<div class="action-buttons export-buttons">
+  <button class="action-btn export" onclick="telechargerPDF()">📄 Télécharger PDF</button>
+  <button class="action-btn export" onclick="imprimerResultats()">🖨️ Imprimer</button>
 </div>
 
   <div class="table-box">
