@@ -325,14 +325,10 @@
       box-shadow: 0 10px 20px rgba(12, 36, 75, 0.28);
     }
     /* 🔴 bouton enregistrer */
-.action-btn.save {
-  background: linear-gradient(135deg, #8b0000, #ff3b3b);
-  box-shadow: 0 10px 20px rgba(255, 60, 60, 0.3);
-}
-
+.action-btn.save,
 .action-btn.save:hover {
-  background: linear-gradient(135deg, #a80000, #ff5c5c);
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, #8b0000, #ff3b3b) !important;
+  box-shadow: 0 10px 20px rgba(255, 60, 60, 0.3) !important;
 }
     /* 🔥 BOUTONS EXPORT VERTS */
 .action-btn.export {
@@ -3470,11 +3466,13 @@ function confirmPayment() {
   </table>
 </div>
 
-<button class="action-btn" style="margin-top:15px; max-width:320px;" onclick="enregistrerCalcul()">
-  Enregistrer ce calcul
-</button>
+<div style="margin-top:25px; margin-bottom:18px;">
+  <button class="action-btn save" style="width:100%; max-width:none;" onclick="enregistrerCalcul()">
+    Enregistrer ce calcul
+  </button>
+</div>
 
-<div id="zoneExport" style="display:none;"></div>
+        <div id="zoneExport" style="display:none;"></div>
         
         <div id="historiqueCalculs" class="panel" style="margin-top: 24px;">
   <div class="panel-top">
