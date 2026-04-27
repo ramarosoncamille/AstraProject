@@ -603,16 +603,22 @@
   }
 }
 
- .auth-screen {
+.auth-screen {
   min-height: 100vh;
-  display: flex;
+  width: 100%;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 30px;
-
-  width: 100%;
-  position: relative;
 }
+    #screen-auth {
+  display: flex;
+}
+
+#screen-app {
+  display: none;
+}
+    
 
 .auth-card {
   width: 100%;
@@ -3155,15 +3161,19 @@ function imprimerResultats() {
 }
 
 function showScreen(screenId) {
-  document.getElementById("screen-auth").style.display = "none";
-  document.getElementById("screen-trial").style.display = "none";
-  document.getElementById("screen-subscription").style.display = "none";
-  document.getElementById("screen-app").style.display = "none";
+  const screens = ["screen-auth", "screen-trial", "screen-subscription", "screen-app"];
 
-  document.getElementById(screenId).style.display = "flex";
-  if (screenId === "screen-app") {
-    document.getElementById(screenId).style.display = "block";
-  }
+  screens.forEach(id => {
+    const screen = document.getElementById(id);
+    if (screen) screen.style.display = "none";
+  });
+
+  const target = document.getElementById(screenId);
+  if (!target) return;
+
+  target.style.display = screenId === "screen-app" ? "block" : "flex";
+
+  window.scrollTo(0, 0);
 }
 
 function showAuthTab(type) {
